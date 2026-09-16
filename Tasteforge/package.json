@@ -22,6 +22,7 @@
   "homepage": "https://github.com/dolilhosen1016/tasteforge-unified-core#readme",
   "dependencies": {
     "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
     "express": "^5.2.1",
     "mongoose": "^9.9.5"
   },
