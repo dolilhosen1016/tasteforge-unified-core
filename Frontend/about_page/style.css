@@ -1,0 +1,125 @@
+/* --- Base Styles & Variables --- */
+:root {
+    --brand-color: #D4F751; /* Lime color */
+    --text-light: #ffffff;
+    --text-muted: #a0a0a0;
+    --font-main: 'Urbanist', 'Segoe UI', sans-serif;
+    --glass-bg: rgba(20, 20, 20, 0.6);
+    --glass-border: rgba(255, 255, 255, 0.1);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body, html {
+    width: 100%; height: 100%;
+    font-family: var(--font-main);
+    background-color: #050505; 
+    /* ✅ FIX: কালো শ্যাডো মুছে শুধু অরিজিনাল ছবি রাখা হলো */
+    background-image: url("About_Background.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: var(--text-light);
+    overflow-x: hidden;
+}
+
+/* লেখার রিডঅ্যাবিলিটি ঠিক রাখার জন্য হালকা শ্যাডো */
+h2 { 
+    font-size: 1.8rem; 
+    font-weight: 700; 
+    margin-bottom: 20px; 
+    text-shadow: 0 4px 15px rgba(0, 0, 0, 0.9); 
+}
+
+/* --- Navbar (Matched Exactly with Home Page) --- */
+.navbar {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 20px 5%; width: 100%; position: fixed; top: 0; left: 0; z-index: 1000;
+    background: rgba(5, 5, 5, 0.4); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+.logo a { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.logo-icon { height: 35px; width: auto; vertical-align: middle; }
+.logo-text { color: var(--text-light); font-size: 1.5rem; font-weight: 700; }
+
+.nav-links { display: flex; gap: 35px; margin-left: auto; margin-right: 60px; }
+.nav-links a { color: var(--text-light); text-decoration: none; font-size: 1rem; font-weight: 600; position: relative; padding-bottom: 5px; transition: color 0.3s ease; }
+.nav-links a:hover { color: var(--brand-color); }
+.nav-links a.active { color: var(--text-light); }
+.nav-links a.active::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 2px; background-color: var(--brand-color); }
+
+.nav-actions-right { display: flex; align-items: center; }
+.menu-icon { cursor: pointer; transition: transform 0.2s ease; display: flex; align-items: center; z-index: 999; }
+.menu-icon:hover { transform: scale(1.1); stroke: var(--brand-color); }
+.menu-icon svg { pointer-events: none; }
+
+.dropdown-menu {
+    position: absolute; top: 80px; right: 5%;
+    background: rgba(17, 17, 17, 0.95); backdrop-filter: blur(15px);
+    border: 1px solid var(--glass-border); border-radius: 12px;
+    padding: 12px 0; min-width: 180px; display: none; flex-direction: column;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5); z-index: 1000;
+}
+.dropdown-menu.active { display: flex !important; }
+.dropdown-item { color: var(--text-light); text-decoration: none; padding: 12px 20px; transition: all 0.3s ease; font-size: 0.95rem; font-weight: 500; }
+.dropdown-item:hover { background-color: rgba(212, 247, 81, 0.1); color: var(--brand-color); padding-left: 24px; }
+
+/* --- Global Glass Panel --- */
+.glass-panel {
+    background: var(--glass-bg); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+    border: 1px solid var(--glass-border); border-radius: 16px;
+}
+
+/* --- About Us Container --- */
+.about-container { max-width: 1200px; margin: 120px auto 50px; padding: 2rem; display: flex; flex-direction: column; gap: 60px; }
+h2 { font-size: 1.8rem; font-weight: 700; margin-bottom: 20px; }
+
+/* 1. Our Story Section */
+.story-section { display: flex; align-items: center; gap: 40px; }
+.story-text { flex: 1; }
+.story-text p { color: var(--text-muted); font-size: 1.1rem; line-height: 1.8; margin-bottom: 20px; }
+.story-image { flex: 1; height: 350px; overflow: hidden; padding: 5px; }
+
+/* 2. Meet Our Chefs Section */
+.chefs-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+.chef-card { padding: 30px 20px; text-align: center; transition: transform 0.3s ease; }
+.chef-card:hover { transform: translateY(-5px); border-color: var(--brand-color); box-shadow: 0 5px 20px rgba(212, 247, 81, 0.1); }
+.chef-img-wrapper { width: 120px; height: 120px; margin: 0 auto 20px; border-radius: 50%; overflow: hidden; border: 2px solid var(--brand-color); background-color: #111; }
+.chef-img-wrapper img { width: 100%; height: 100%; object-fit: cover; }
+.chef-card h3 { font-size: 1.3rem; margin-bottom: 5px; }
+.chef-title { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 15px; }
+.social-icons { display: flex; justify-content: center; gap: 15px; }
+.social-icons i { width: 35px; height: 35px; border-radius: 50%; background: rgba(255,255,255,0.05); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: 0.3s; font-size: 0.9rem; }
+.social-icons i:hover { background: var(--brand-color); color: #000; }
+
+/* 3. FAQ & Contact Section */
+.bottom-section { display: flex; gap: 40px; }
+.faq-column, .contact-column { flex: 1; }
+
+/* FAQ Accordion */
+.faq-list { display: flex; flex-direction: column; gap: 15px; }
+.faq-item { padding: 0 20px; overflow: hidden; transition: 0.3s; }
+.faq-question { padding: 20px 0; font-size: 1.05rem; font-weight: 600; display: flex; justify-content: space-between; align-items: center; cursor: pointer; color: var(--text-light); }
+.faq-question i { color: var(--brand-color); transition: transform 0.3s ease; }
+.faq-answer { max-height: 0; padding: 0; color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; opacity: 0; transition: all 0.4s ease; }
+
+/* Active State for FAQ */
+.faq-item.active { border-color: var(--brand-color); background: rgba(212, 247, 81, 0.05); }
+.faq-item.active .faq-question i { transform: rotate(45deg); color: #ff4d4d; /* + আইকন ঘুরে x হয়ে লাল হবে */ }
+.faq-item.active .faq-answer { max-height: 150px; padding-bottom: 20px; opacity: 1; }
+
+/* Contact Form */
+.contact-form { padding: 30px; display: flex; flex-direction: column; gap: 20px; }
+.input-row { display: flex; gap: 20px; }
+.contact-form input, .contact-form textarea { width: 100%; padding: 15px; border-radius: 8px; background: rgba(0, 0, 0, 0.5); border: 1px solid rgba(255, 255, 255, 0.1); color: white; font-family: inherit; font-size: 1rem; outline: none; transition: 0.3s; }
+.contact-form input:focus, .contact-form textarea:focus { border-color: var(--brand-color); background: rgba(0, 0, 0, 0.8); }
+.submit-btn { padding: 15px; border-radius: 8px; background: var(--brand-color); color: #000; font-weight: 700; font-size: 1.1rem; border: none; cursor: pointer; transition: 0.3s ease; font-family: inherit; }
+.submit-btn:hover { background: #bce13d; transform: translateY(-2px); box-shadow: 0 5px 15px rgba(212, 247, 81, 0.3); }
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+    .story-section, .bottom-section { flex-direction: column; }
+    .chefs-grid { grid-template-columns: 1fr; }
+    .input-row { flex-direction: column; }
+}

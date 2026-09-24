@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TasteForge - Checkout</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ==========================================
+         📌 TOP NAVIGATION BAR
+         ========================================== -->
+    <header class="top-bar">
+        <button class="back-btn" onclick="window.history.back()">
+            <i class="fa-solid fa-arrow-left"></i> Back
+        </button>
+        <div class="header-title" style="display: flex; align-items: center; justify-content: center; gap: 10px;">
+            <img src="../TasteForge_Logo.png" alt="TasteForge Logo" style="width: 28px; height: 28px; object-fit: contain;">
+            <span>TasteForge</span>
+        </div>
+    </header>
+
+    <div class="checkout-container">
+        
+        <div id="paymentSection" class="checkout-step active">
+            
+            <div class="payment-card">
+                <div class="card-header">
+                    <h2>Payment Method</h2>
+                    <p>Choose your preferred payment option.</p>
+                </div>
+
+                <div class="payment-options">
+                    <div class="pay-option disabled-option" onclick="showToast()">
+                        <div class="radio-circle"></div>
+                        <span class="option-name">Credit / Debit Card</span>
+                        <div class="option-icons">
+                            <i class="fa-brands fa-cc-visa" style="color: #1a1f71;"></i>
+                            <i class="fa-brands fa-cc-mastercard" style="color: #eb001b;"></i>
+                        </div>
+                    </div>
+
+                    <div class="pay-option disabled-option" onclick="showToast()">
+                        <div class="radio-circle"></div>
+                        <span class="option-name">bKash</span>
+                        <i class="fa-solid fa-chevron-right arrow-icon"></i>
+                    </div>
+
+                    <div class="pay-option disabled-option" onclick="showToast()">
+                        <div class="radio-circle"></div>
+                        <span class="option-name">Nogod</span>
+                        <i class="fa-solid fa-chevron-right arrow-icon"></i>
+                    </div>
+
+                    <div class="pay-option active-option">
+                        <div class="radio-circle active-circle"></div>
+                        <span class="option-name" style="color: white;">Cash (Pay at Counter)</span>
+                        <i class="fa-solid fa-chevron-right arrow-icon"></i>
+                    </div>
+                </div>
+
+                <div class="secure-footer">
+                    <i class="fa-solid fa-lock"></i> All payments are secure and encrypted.
+                </div>
+            </div>
+
+            <div class="action-footer">
+                <div class="total-display">Total to Pay: $<span id="checkoutTotal">0.00</span></div>
+                <button id="confirmPaymentBtn" class="btn-primary">Confirm Order</button>
+            </div>
+        </div>
+
+        <div id="confirmationSection" class="checkout-step" style="display: none;">
+            
+            <div class="payment-card receipt-area" id="receiptArea">
+                <div class="success-icon">
+                    <i class="fa-solid fa-check"></i>
+                </div>
+                <h2>Order Confirmed!</h2>
+                <p>Thank you for your order.</p>
+                <p class="sub-text">We've received your order and it will be prepared soon.</p>
+
+                <div class="order-stats-grid">
+                    <div class="stat-box">
+                        <p>Order ID</p>
+                        <h4 id="displayOrderId">#TFP----</h4>
+                    </div>
+                    <div class="stat-box">
+                        <p>Queue No.</p>
+                        <h4 id="displayQueue" style="color: var(--accent);">--</h4>
+                    </div>
+                    <div class="stat-box">
+                        <p>Est. Time</p>
+                        <h4>28 min</h4>
+                    </div>
+                </div>
+            </div>
+
+            <div class="confirmation-actions">
+                <button id="downloadReceiptBtn" class="btn-primary">Download Receipt</button>
+                <button class="btn-secondary" onclick="window.location.href='../dashboard_page/index.html'">Back to Dashboard</button>
+            </div>
+        </div>
+
+    </div>
+
+    <div id="toastMessage" class="toast">⚠️ Digital gateway integration in progress. Please proceed with Cash.</div>
+
+    <script src="script.js"></script>
+</body>
+</html>

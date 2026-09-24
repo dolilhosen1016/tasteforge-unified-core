@@ -1,0 +1,215 @@
+/* Base Styles & Variables */
+:root {
+    --bg-dark: #111111;
+    --modal-bg: #181818;
+    --input-bg: #222222;
+    --border-color: #333333;
+    --accent: #cbf122; /* Neon Lime Green */
+    --accent-hover: #bde020;
+    --text-main: #ffffff;
+    --text-muted: #999999;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--bg-dark);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('Signin_BG.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    background-attachment: fixed;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    color: var(--text-main);
+}
+
+/* Modal Container */
+.auth-modal {
+    background-color: var(--modal-bg);
+    width: 100%;
+    max-width: 420px;
+    border-radius: 16px;
+    padding: 32px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Header & Logo Styles */
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    flex-grow: 1;
+    gap: 10px; 
+}
+
+.logo-icon {
+    max-height: 28px; 
+}
+
+.brand-name {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text-main);
+    letter-spacing: 0.5px;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s;
+}
+
+.close-btn svg {
+    width: 20px;
+    height: 20px;
+}
+
+.close-btn:hover {
+    color: var(--text-main);
+}
+
+/* Welcome Text & Lock Icon */
+.welcome-text {
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.lock-icon {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 16px;
+}
+
+.lock-icon svg {
+    width: 48px;
+    height: 48px;
+    padding: 10px;
+    background-color: rgba(203, 241, 34, 0.1); /* Subtle accent background */
+    border-radius: 50%;
+}
+
+.welcome-text h2 {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.welcome-text p {
+    color: var(--text-muted);
+    font-size: 14px;
+    line-height: 1.5;
+    padding: 0 10px;
+}
+
+/* Inputs */
+.input-group {
+    margin-bottom: 24px;
+}
+
+input[type="email"] {
+    width: 100%;
+    background-color: var(--input-bg);
+    border: 1px solid var(--border-color);
+    color: var(--text-main);
+    padding: 14px 16px;
+    border-radius: 8px;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+input[type="email"]:focus {
+    border-color: var(--accent);
+}
+
+/* Button */
+.btn-primary {
+    width: 100%;
+    background-color: var(--accent);
+    color: #000;
+    border: none;
+    padding: 14px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btn-primary:hover {
+    background-color: var(--accent-hover);
+}
+
+.btn-primary:disabled {
+    background-color: #555;
+    cursor: not-allowed;
+}
+
+/* Success Message */
+.success-message {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background-color: rgba(40, 167, 69, 0.1);
+    border: 1px solid rgba(40, 167, 69, 0.3);
+    color: #28a745;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 24px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.success-message svg {
+    width: 18px;
+    height: 18px;
+}
+
+/* Footer / Back Link */
+.modal-footer {
+    text-align: center;
+    margin-top: 24px;
+}
+
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.back-link svg {
+    width: 16px;
+    height: 16px;
+}
+
+.back-link:hover {
+    color: var(--text-main);
+}

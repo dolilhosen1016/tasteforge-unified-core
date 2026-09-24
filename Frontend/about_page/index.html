@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | TasteForge</title>
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="navbar">
+        <div class="logo">
+            <a href="../index.html" style="display: flex; align-items: center; gap: 10px; text-decoration: none;">
+                <img src="../TasteForge_Logo.png" alt="TasteForge Logo Icon" class="logo-icon">
+                <span class="logo-text">TasteForge</span>
+            </a>
+        </div>
+        
+        <nav class="nav-links">
+            <a href="../index.html">Home</a>
+            <a href="../menu_page/index.html">Menu</a>
+            <a href="../how_it_works_page/index.html">How It Works</a>
+            <a href="index.html" class="active">About</a>
+        </nav>
+
+        <div class="nav-actions-right">
+            <div class="menu-icon" id="menuBtn">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </div>
+        </div>
+
+        <div class="dropdown-menu" id="dropdownMenu">
+            <a href="../help_center_page/index.html" class="dropdown-item">Help & Legal</a>
+            <a href="../contact_page/index.html" class="dropdown-item">Contact Us</a>
+        </div>
+    </header>
+
+    <main class="about-container">
+        
+        <section class="story-section">
+            <div class="story-text">
+                <h2>Our Story</h2>
+                <p>TasteForge was born from a simple idea: food should be personal, creative and made with love.</p>
+                <p>We bring premium ingredients and modern technology together to let you craft meals that truly match your mood and lifestyle.</p>
+            </div>
+            <div class="story-image glass-panel">
+                <img src="https://images.unsplash.com/photo-1600565193348-f74bd3c7ccdf?q=80&w=1000&auto=format&fit=crop" alt="Chefs cooking in kitchen" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;">
+            </div>
+        </section>
+
+        <section class="chefs-section">
+            <h2>Meet Our Chefs</h2>
+            <div class="chefs-grid">
+                <div class="chef-card glass-panel">
+                    <div class="chef-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?q=80&w=400&auto=format&fit=crop" alt="Chef Ayman">
+                    </div>
+                    <h3>Chef Ayman</h3>
+                    <p class="chef-title">Head Chef</p>
+                    <div class="social-icons">
+                        <i class="fa-brands fa-facebook-f"></i>
+                        <i class="fa-brands fa-pinterest-p"></i>
+                        <i class="fa-brands fa-instagram"></i>
+                    </div>
+                </div>
+
+                <div class="chef-card glass-panel">
+                    <div class="chef-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1607990281513-2c110a25bd8c?q=80&w=400&auto=format&fit=crop" alt="Chef Nafisa">
+                    </div>
+                    <h3>Chef Nazrul</h3>
+                    <p class="chef-title">Nutritionist</p>
+                    <div class="social-icons">
+                        <i class="fa-brands fa-facebook-f"></i>
+                        <i class="fa-brands fa-pinterest-p"></i>
+                        <i class="fa-brands fa-instagram"></i>
+                    </div>
+                </div>
+
+                <div class="chef-card glass-panel">
+                    <div class="chef-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1581299894007-aaa50297cf16?q=80&w=400&auto=format&fit=crop" alt="Chef Rafi">
+                    </div>
+                    <h3>Chef Abir</h3>
+                    <p class="chef-title">Co-Founder</p>
+                    <div class="social-icons">
+                        <i class="fa-brands fa-facebook-f"></i>
+                        <i class="fa-brands fa-pinterest-p"></i>
+                        <i class="fa-brands fa-instagram"></i>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="bottom-section">
+            <div class="faq-column">
+                <h2>FAQ</h2>
+                <div class="faq-list">
+                    <div class="faq-item glass-panel">
+                        <div class="faq-question">How does the food builder work? <i class="fa-solid fa-plus"></i></div>
+                        <div class="faq-answer">Our custom builder allows you to select your base, proteins, and toppings in real-time to create a meal tailored to your taste and nutritional needs.</div>
+                    </div>
+                    <div class="faq-item glass-panel">
+                        <div class="faq-question">Can I save my custom build? <i class="fa-solid fa-plus"></i></div>
+                        <div class="faq-answer">Yes, registered users can save their favorite builds to their profile for easy re-ordering later.</div>
+                    </div>
+                    <div class="faq-item glass-panel">
+                        <div class="faq-question">Do you offer free delivery? <i class="fa-solid fa-plus"></i></div>
+                        <div class="faq-answer">We offer free delivery for all orders over $30 within our primary delivery zones.</div>
+                    </div>
+                    <div class="faq-item glass-panel">
+                        <div class="faq-question">Is the food halal? <i class="fa-solid fa-plus"></i></div>
+                        <div class="faq-answer">Absolutely. All our meat and poultry ingredients are strictly 100% certified halal.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-column">
+                <h2>Get in Touch</h2>
+                <form class="contact-form glass-panel">
+                    <div class="input-row">
+                        <input type="text" placeholder="Name" required>
+                        <input type="email" placeholder="Email" required>
+                    </div>
+                    <textarea placeholder="Message" rows="5" required></textarea>
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

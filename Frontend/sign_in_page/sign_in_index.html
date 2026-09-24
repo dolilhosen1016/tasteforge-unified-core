@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TasteForge - Sign In</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Login Script -->
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+<body>
+
+<div class="auth-modal">
+    <div class="modal-header">
+        <button class="back-btn-top" onclick="window.location.href='../index.html'" title="Go Back">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+        </button>
+        <div class="logo-container-center">
+            <img src="../TasteForge_Logo.png" alt="TasteForge Logo" class="logo-icon" style="width: 28px; height: 28px;">
+            <span class="brand-name">TasteForge</span>
+        </div>
+    </div>
+
+    <div class="welcome-text">
+        <h2>Welcome Back!</h2>
+        <p>Sign in to continue to TasteForge</p>
+    </div>
+
+    <!-- 🔥 Chef Tab Removed 🔥 -->
+    <div class="tab-container">
+        <button class="tab-btn active" id="tab-user" onclick="switchTab('user')">User</button>
+        <button class="tab-btn" id="tab-owner" onclick="switchTab('owner')">Owner</button>
+    </div>
+
+    <form id="loginForm">
+        <div class="input-group">
+            <input type="email" placeholder="Email Address" required>
+        </div>
+        
+        <div class="input-group password-group">
+            <input type="password" id="passwordInput" placeholder="Password" required>
+            <button type="button" class="toggle-password" onclick="togglePassword()">
+                <svg id="eye-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                </svg>
+            </button>
+        </div>
+
+        <div class="form-options">
+            <label class="remember-me">
+                <input type="checkbox">
+                <span class="checkmark"></span>
+                Remember me
+            </label>
+            <a href="../forgot_password/Forgot_index.html" class="forgot-link">Forgot Password?</a>
+        </div>
+
+        <button type="submit" class="btn-primary" id="loginBtn">Login</button>
+    </form>
+
+    <div class="divider">
+        <span>or continue with</span>
+    </div>
+
+    <!-- Social Login Buttons -->
+    <div class="social-login-container">
+        <button type="button" class="social-btn" onclick="triggerGoogleLogin()">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google">
+        </button>
+        <button type="button" class="social-btn" onclick="alert('Facebook App setup required for production!')">
+            <svg viewBox="0 0 24 24" fill="#1877F2"><path d="M22.675 0h-21.35C.597 0 0 .597 0 1.325v21.351C0 23.403.597 24 1.325 24H12.82v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116c.73 0 1.323-.597 1.323-1.324V1.325C24 .597 23.403 0 22.675 0z"/></svg>
+        </button>
+        <button type="button" class="social-btn" onclick="alert('GitHub App setup required for production!')">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+        </button>
+    </div>
+
+    <button class="btn-secondary" onclick="window.location.href='../menu_page/index.html'">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+        Continue as Guest
+    </button>
+
+    <div class="modal-footer" id="signupFooter">
+        <p>Don't have an account? <a href="../sign_up_page/user_index.html" class="signup-link" id="signupLink">Sign Up</a></p>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

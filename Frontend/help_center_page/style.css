@@ -1,0 +1,138 @@
+/* --- Base Styles & Variables --- */
+:root {
+    --brand-color: #D4F751;
+    --text-light: #ffffff;
+    --text-muted: #a0a0a0;
+    --font-main: 'Urbanist', sans-serif;
+    --glass-bg: rgba(20, 20, 20, 0.6);
+    --glass-border: rgba(255, 255, 255, 0.08);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body, html {
+    width: 100%; min-height: 100vh;
+    font-family: var(--font-main);
+    background-color: #050505; 
+    background-image: linear-gradient(rgba(10, 10, 10, 0.8), rgba(10, 10, 10, 0.9)), url("Help_Center_Background.png");
+    background-size: cover; background-position: center; background-repeat: no-repeat; background-attachment: fixed;
+    color: var(--text-light); overflow-x: hidden;
+}
+
+/* ✅ FIX: BULLETPROOF NAVBAR CSS */
+.navbar {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 20px 5%; width: 100%; position: fixed; top: 0; left: 0; z-index: 1000;
+    background: rgba(5, 5, 5, 0.4); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+.logo a { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.logo-icon { height: 35px; width: auto; vertical-align: middle; }
+.logo-text { color: var(--text-light); font-size: 1.5rem; font-weight: 700; }
+
+.nav-links { display: flex; gap: 35px; margin-left: auto; margin-right: 60px; }
+.nav-links a { color: var(--text-light); text-decoration: none; font-size: 1rem; font-weight: 600; position: relative; padding-bottom: 5px; transition: color 0.3s ease; }
+.nav-links a:hover { color: var(--brand-color); }
+.nav-links a.active::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 2px; background-color: var(--brand-color); }
+
+.nav-actions-right { display: flex; align-items: center; }
+.menu-icon { cursor: pointer; transition: transform 0.2s ease; display: flex; align-items: center; z-index: 999; }
+.menu-icon:hover { transform: scale(1.1); stroke: var(--brand-color); }
+
+/* ✅ FIX: DROPDOWN MENU */
+.dropdown-menu {
+    position: absolute; top: 80px; right: 5%;
+    background: rgba(17, 17, 17, 0.95); backdrop-filter: blur(15px);
+    border: 1px solid var(--glass-border); border-radius: 12px;
+    padding: 12px 0; min-width: 180px; display: none; flex-direction: column;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5); z-index: 1000;
+}
+.dropdown-menu.active { display: flex !important; }
+.dropdown-item { color: var(--text-light); text-decoration: none; padding: 12px 20px; transition: all 0.3s ease; font-size: 0.95rem; font-weight: 500; }
+.dropdown-item:hover { background-color: rgba(212, 247, 81, 0.1); color: var(--brand-color); padding-left: 24px; }
+
+/* Global Glass Panel */
+.glass-panel { background: var(--glass-bg); backdrop-filter: blur(20px); border: 1px solid var(--glass-border); border-radius: 12px; }
+
+/* --- Layout --- */
+.help-container { max-width: 1000px; margin: 130px auto 50px; padding: 0 2rem; }
+.help-header { margin-bottom: 30px; }
+.help-header h1 { font-size: 2.5rem; font-weight: 800; margin-bottom: 10px; }
+.help-header p { color: var(--text-muted); font-size: 1.1rem; }
+
+/* Tab Navigation */
+.tab-navigation { display: flex; gap: 15px; margin-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 15px; }
+.tab-btn { background: transparent; border: none; color: var(--text-muted); font-size: 1.1rem; font-weight: 600; font-family: inherit; cursor: pointer; padding: 10px 20px; border-radius: 8px; transition: 0.3s; }
+.tab-btn:hover { color: var(--text-light); background: rgba(255,255,255,0.05); }
+.tab-btn.active { background: rgba(212, 247, 81, 0.15); color: var(--brand-color); border: 1px solid rgba(212, 247, 81, 0.3); }
+
+.tab-content { display: none; animation: fadeIn 0.4s ease forwards; }
+.tab-content.active { display: block; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+/* Search Bar */
+.search-bar { display: flex; align-items: center; padding: 15px 20px; gap: 15px; margin-bottom: 40px; background: rgba(15, 15, 15, 0.8); }
+.search-bar i { color: var(--text-muted); font-size: 1.2rem; }
+.search-bar input { width: 100%; background: transparent; border: none; color: white; font-size: 1.05rem; font-family: inherit; outline: none; }
+
+/* Help Grid Layout */
+.help-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 30px; align-items: start; }
+
+/* FAQ Accordion */
+.faq-column h3 { font-size: 1.2rem; margin-bottom: 15px; color: var(--text-light); }
+.faq-list { display: flex; flex-direction: column; gap: 12px; }
+.faq-item { padding: 0 20px; overflow: hidden; transition: 0.3s; background: rgba(15, 15, 15, 0.5); cursor: pointer; }
+.faq-question { padding: 20px 0; font-size: 1.05rem; font-weight: 500; display: flex; justify-content: space-between; align-items: center; color: var(--text-light); }
+.faq-question i { color: var(--brand-color); transition: transform 0.3s ease; font-size: 0.9rem; }
+.faq-answer { max-height: 0; padding: 0; color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; opacity: 0; transition: all 0.4s ease; }
+.faq-item:hover { border-color: rgba(212, 247, 81, 0.4); }
+.faq-item.active { border-color: var(--brand-color); background: rgba(212, 247, 81, 0.05); }
+.faq-item.active .faq-question i { transform: rotate(90deg); }
+.faq-item.active .faq-answer { max-height: 150px; padding-bottom: 20px; opacity: 1; }
+
+/* Contact Card */
+.contact-card { padding: 30px; display: flex; flex-direction: column; gap: 20px; background: rgba(15, 15, 15, 0.8); }
+.contact-card h2 { font-size: 1.6rem; font-weight: 700; margin-bottom: -10px; }
+.contact-card p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 10px; }
+.contact-options { display: flex; flex-direction: column; gap: 25px; margin-bottom: 20px; }
+.contact-method { display: flex; align-items: center; gap: 15px; }
+.contact-method i { font-size: 1.4rem; color: var(--brand-color); }
+.contact-method h4 { font-size: 1rem; color: var(--text-light); margin-bottom: 3px; font-weight: 600; }
+.contact-method span { font-size: 0.85rem; color: var(--text-muted); }
+
+.primary-btn { background-color: var(--brand-color); color: #000; border: none; padding: 15px; border-radius: 8px; font-weight: 700; font-family: inherit; font-size: 1rem; cursor: pointer; transition: 0.3s; text-align: center; text-decoration: none; display: inline-block; }
+.primary-btn:hover { background-color: #bce13d; transform: translateY(-2px); }
+.full-width { width: 100%; }
+
+/* ==========================================
+   ✅ NEW: PROFESSIONAL PRIVACY POLICY STYLES
+   ========================================== */
+.privacy-document { padding: 40px; background: rgba(15, 15, 15, 0.7); }
+.privacy-title-area { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 20px; }
+.privacy-title-area h2 { font-size: 2rem; color: var(--text-light); display: flex; align-items: center; gap: 10px; }
+.privacy-title-area h2 i { color: var(--brand-color); }
+.update-badge { background: rgba(212, 247, 81, 0.1); color: var(--brand-color); padding: 5px 12px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; border: 1px solid rgba(212, 247, 81, 0.3); }
+
+.privacy-intro { font-size: 1.1rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 30px; }
+
+/* Section Boxes */
+.policy-box { background: rgba(0, 0, 0, 0.4); border: 1px solid rgba(255, 255, 255, 0.05); padding: 25px; border-radius: 12px; margin-bottom: 20px; transition: 0.3s; }
+.policy-box:hover { border-color: rgba(212, 247, 81, 0.2); background: rgba(10, 10, 10, 0.6); }
+.policy-box h3 { font-size: 1.25rem; color: var(--text-light); margin-bottom: 15px; display: flex; align-items: center; gap: 10px; }
+.policy-box h3 i { color: var(--brand-color); font-size: 1.1rem; }
+.policy-box p { color: var(--text-muted); line-height: 1.6; font-size: 0.95rem; }
+.policy-box ul { margin-top: 15px; padding-left: 20px; color: var(--text-muted); }
+.policy-box li { margin-bottom: 10px; font-size: 0.95rem; line-height: 1.5; }
+.policy-box strong { color: var(--text-light); }
+
+/* Privacy Footer */
+.privacy-footer { margin-top: 40px; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: space-between; align-items: center; }
+.privacy-footer p { color: var(--text-muted); font-size: 0.95rem; }
+.privacy-contact-btn { background: transparent; color: var(--text-light); border: 1px solid var(--text-muted); padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: 600; transition: 0.3s; display: flex; align-items: center; gap: 8px; }
+.privacy-contact-btn:hover { background: var(--text-light); color: #000; }
+
+@media (max-width: 850px) {
+    .help-grid { grid-template-columns: 1fr; }
+    .privacy-title-area { flex-direction: column; align-items: flex-start; gap: 15px; }
+    .privacy-footer { flex-direction: column; gap: 15px; text-align: center; }
+}

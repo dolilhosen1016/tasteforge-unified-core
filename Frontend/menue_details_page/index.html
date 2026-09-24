@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Craft Your Masterpiece | TasteForge</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Urbanist:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <!-- ==========================================
+             📌 TOP NAVIGATION BAR
+             ========================================== -->
+        <header class="top-bar">
+            <button class="icon-btn back-btn" id="detailsBackBtn">
+                <i class="fa-solid fa-arrow-left"></i> Back to Menu
+            </button>
+            <div class="header-title">Build Your Masterpiece</div>
+            <button class="icon-btn cart-btn">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span class="cart-badge" id="cartCountBadge">0</span>
+            </button>
+        </header>
+
+        <!-- ==========================================
+             🎨 MAIN WORKSPACE (Dynamic Content)
+             ========================================== -->
+        <main class="workspace" id="detailsWorkspaceRoot">
+            <div class="loading-msg">Loading TasteForge Engine...</div>
+        </main>
+    </div>
+
+    <!-- ==========================================
+         🛒 CART MODAL (BASKET)
+         ========================================== -->
+    <div id="cartModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Your Basket 🛒</h2>
+                <span class="close-modal" id="closeCartModal">&times;</span>
+            </div>
+            <div class="modal-body" id="cartItemsContainer">
+                <p class="empty-cart-msg">Your basket is empty.</p>
+            </div>
+            <div class="modal-footer">
+                <div class="cart-total">Total: $<span id="cartTotal">0.00</span></div>
+                <button class="checkout-btn" id="confirmOrderBtn">Confirm Order</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script File -->
+    <script src="script.js"></script>
+</body>
+</html>

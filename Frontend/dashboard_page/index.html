@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard | TasteForge</title>
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <aside class="sidebar">
+        <div class="logo">
+            <a href="../index.html" style="display: flex; align-items: center; gap: 10px; text-decoration: none;">
+                <img src="../TasteForge_Logo.png" alt="TasteForge Logo" class="logo-icon">
+                <span class="logo-text">TasteForge</span>
+            </a>
+        </div>
+
+        <nav class="sidebar-nav">
+            <a href="#" class="nav-item active" id="sidebarDashBtn"><i class="fa-solid fa-house-user"></i> Dashboard</a>
+            <a href="../menu_page/index.html" class="nav-item"><i class="fa-solid fa-utensils"></i> Builder</a>
+            <a href="#" class="nav-item" id="sidebarOrdersBtn"><i class="fa-regular fa-clipboard"></i> Orders</a>
+            <a href="#" class="nav-item" id="sidebarSavedBtn"><i class="fa-regular fa-bookmark"></i> Saved Builds</a>
+            <a href="#" class="nav-item" id="sidebarRewardsBtn"><i class="fa-solid fa-gift"></i> Rewards</a>
+            <a href="#" class="nav-item" id="sidebarSettingsBtn"><i class="fa-solid fa-gear"></i> Settings</a>
+        </nav>
+
+        <div class="logout-container">
+            <a href="../index.html" class="nav-item logout-btn"><i class="fa-solid fa-arrow-right-from-bracket"></i> Logout</a>
+        </div>
+    </aside>
+
+    <main class="dashboard-content">
+        
+        <header class="dash-header">
+            <div class="greeting-text">
+                <h1 id="greetingMsg">Good Evening, <span id="userNameDisplay">User</span> <span class="wave">👋</span></h1>
+                <p>Let's craft something amazing today!</p>
+            </div>
+            
+            <div class="header-actions">
+                <div class="action-container">
+                    <button class="icon-btn" id="notificationBtn">
+                        <i class="fa-regular fa-bell"></i>
+                        <span class="notification-dot" id="notiDot"></span>
+                    </button>
+                    <div class="notification-dropdown glass-panel" id="notificationDropdown">
+                        <div class="dropdown-title">Recent Notifications</div>
+                        <div class="noti-item unread">
+                            <i class="fa-solid fa-circle-check"></i>
+                            <div class="noti-text">
+                                <p>Welcome to TasteForge Dashboard!</p>
+                                <span>Just now</span>
+                            </div>
+                        </div>
+                        <div class="noti-item">
+                            <i class="fa-solid fa-fire"></i>
+                            <div class="noti-text">
+                                <p>Craft your custom meal to earn loyalty points dynamically.</p>
+                                <span>2 hours ago</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="action-container">
+                    <div class="profile-avatar" id="profileBtn"><i class="fa-solid fa-user"></i></div>
+                    <div class="profile-dropdown glass-panel" id="profileDropdown">
+                        <div class="profile-info-header">
+                            <h4 id="dropdownName">Dolil Hosen</h4>
+                            <p id="dropdownEmail">dolil@tasteforge.com</p>
+                        </div>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="profile-link" id="profileSettingsBtn"><i class="fa-solid fa-sliders"></i> Preferences</a>
+                        <a href="../menu_page/index.html" class="profile-link"><i class="fa-solid fa-bowl-food"></i> Menu Builder</a>
+                        <div class="dropdown-divider"></div>
+                        <a href="../index.html" class="profile-link logout"><i class="fa-solid fa-arrow-right-from-bracket"></i> Sign Out</a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <section class="overview-cards">
+            <div class="dash-card loyalty-card">
+                <p class="card-label">Loyalty Points</p>
+                <div class="points-value">
+                    <h2 id="loyaltyPointsDisplay">0</h2>
+                    <span>Points</span>
+                </div>
+                <div class="progress-section">
+                    <p class="progress-text" id="nextRewardText">Next Reward: 500 pts</p>
+                    <div class="progress-bar-bg">
+                        <div class="progress-fill" id="pointsProgressFill" style="width: 0%;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dash-card stats-card">
+                <p class="card-label">Total Meals Crafted</p>
+                <h2 class="wallet-amount" id="totalOrdersCount">0</h2>
+                <p class="card-label" style="margin-top: 10px; font-weight: 600;"><i class="fa-solid fa-fire" style="color: var(--brand-color);"></i> TasteForge Active Session</p>
+            </div>
+        </section>
+
+        <section class="saved-builds-section" id="savedBuildsSection">
+            <div class="section-header">
+                <h3>Saved Custom Builds</h3>
+                <a href="../menu_page/index.html" class="view-all">View All <i class="fa-solid fa-chevron-right"></i></a>
+            </div>
+            <div class="builds-grid" id="savedBuildsContainer"></div>
+        </section>
+
+        <section class="recent-orders-section" id="recentOrdersSection">
+            <div class="section-header">
+                <h3>Recent Order History</h3>
+                <a href="#" class="view-all" id="orderViewAllBtn">View All <i class="fa-solid fa-chevron-right"></i></a>
+            </div>
+            <div class="order-list" id="orderListContainer"></div>
+        </section>
+    </main>
+
+    <div class="modal-overlay" id="settingsModal">
+        <div class="settings-modal-content glass-panel">
+            <div class="modal-header">
+                <h2><i class="fa-solid fa-gear"></i> Preferences & Settings</h2>
+                <button class="close-btn" id="closeSettingsBtn"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="modal-body">
+                <div class="setting-group">
+                    <h3>Profile Information</h3>
+                    <input type="text" placeholder="Full Name" value="Dolil Hosen" class="setting-input" id="settingsInputName">
+                    <input type="email" placeholder="Email Address" value="dolil@tasteforge.com" class="setting-input" id="settingsInputEmail">
+                </div>
+                <div class="setting-group">
+                    <h3>Notifications</h3>
+                    <div class="toggle-row">
+                        <span>Order Updates (Live Sync)</span>
+                        <label class="toggle-switch"><input type="checkbox" checked><span class="slider"></span></label>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn secondary-btn" id="cancelSettingsBtn">Cancel</button>
+                <button class="btn primary-btn" id="saveSettingsBtn">Save Changes</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="rewardsModal">
+        <div class="rewards-modal-content glass-panel">
+            <div class="modal-header">
+                <h2><i class="fa-solid fa-gift"></i> TasteForge Rewards Club</h2>
+                <button class="close-btn" id="closeRewardsBtn"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="modal-body">
+                <div class="rewards-points-summary">
+                    <p>Your Current Balance</p>
+                    <h3 id="modalRewardsPoints">0 PTS</h3>
+                </div>
+                
+                <div class="rewards-list-wrapper">
+                    <div class="reward-tier-item">
+                        <div class="reward-icon-box"><i class="fa-solid fa-truck-fast"></i></div>
+                        <div class="reward-meta-data">
+                            <h4>10% Off Your Next Craft</h4>
+                            <p>Required to unlock: 100 PTS</p>
+                        </div>
+                        <button class="btn-claim-reward locked" data-cost="100">Claim</button>
+                    </div>
+
+                    <div class="reward-tier-item">
+                        <div class="reward-icon-box"><i class="fa-solid fa-tags"></i></div>
+                        <div class="reward-meta-data">
+                            <h4>40% Off Your Next Craft</h4>
+                            <p>Required to unlock: 300 PTS</p>
+                        </div>
+                        <button class="btn-claim-reward locked" data-cost="300">Claim</button>
+                    </div>
+
+                    <div class="reward-tier-item">
+                        <div class="reward-icon-box"><i class="fa-solid fa-crown"></i></div>
+                        <div class="reward-meta-data">
+                            <h4>TasteForge Secret Mystery Box</h4>
+                            <p>Required to unlock: 500 PTS</p>
+                        </div>
+                        <button class="btn-claim-reward locked" data-cost="500">Claim</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

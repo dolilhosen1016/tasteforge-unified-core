@@ -1,0 +1,197 @@
+:root {
+    --bg-dark: #0a0a0a;
+    /* গ্লাস-মরফিজম প্যানেল ব্যাকগ্রাউন্ড */
+    --bg-card: rgba(18, 18, 18, 0.4); 
+    --bg-panel: rgba(20, 20, 20, 0.45); 
+    --border-color: rgba(255, 255, 255, 0.1);
+    /* ব্যাকগ্রাউন্ডের সাথে ম্যাচ করে প্রিমিয়াম গোল্ডেন কালার */
+    --accent: #f5b041; 
+    --text-main: #ffffff;
+    --text-muted: #a0a0a0;
+    --status-pending: #ffb142;
+    --status-completed: #2ed573;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+
+body { 
+    display: flex; 
+    color: var(--text-main); 
+    min-height: 100vh; 
+    background-image: url("owner_dashboard_bg.png");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    position: relative;
+    z-index: 1;
+}
+
+/* ব্যাকগ্রাউন্ডের ওপর একটা ডার্ক ওভারলে, যাতে টেক্সট ক্লিয়ার বোঝা যায় */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.65); 
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    z-index: -1;
+}
+
+/* Sidebar Glass Effect */
+.sidebar {
+    width: 260px; background: var(--bg-card); 
+    backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+    border-right: 1px solid var(--border-color);
+    padding: 30px 20px; display: flex; flex-direction: column; position: fixed; height: 100vh;
+}
+
+/* Cards & Tables Glass Effect */
+.dash-card, .table-container, .admin-menu-card, .profile-dropdown {
+    background: var(--bg-panel); 
+    backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+    border: 1px solid var(--border-color); 
+    border-radius: 16px; 
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+}
+
+/* Sidebar */
+.sidebar {
+    width: 260px; background: var(--bg-card); border-right: 1px solid var(--border-color);
+    padding: 30px 20px; display: flex; flex-direction: column; position: fixed; height: 100vh;
+}
+.logo { display: flex; align-items: center; gap: 12px; margin-bottom: 50px; }
+.logo-icon { width: 35px; height: 35px; object-fit: contain; }
+.logo-text { font-size: 1.4rem; font-weight: 700; color: var(--accent); }
+.sidebar-nav { display: flex; flex-direction: column; gap: 10px; flex-grow: 1; }
+.nav-item {
+    display: flex; align-items: center; gap: 12px; padding: 14px 18px;
+    color: var(--text-muted); text-decoration: none; font-weight: 500;
+    border-radius: 12px; transition: 0.3s;
+}
+.nav-item:hover, .nav-item.active { background: rgba(200, 251, 46, 0.1); color: var(--accent); }
+.logout-container { margin-top: auto; border-top: 1px solid var(--border-color); padding-top: 20px; }
+.logout-btn:hover { background: rgba(255, 71, 87, 0.1); color: #ff4757; }
+
+/* Main Content */
+.dashboard-content { margin-left: 260px; padding: 40px; width: calc(100% - 260px); }
+.dash-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; }
+.greeting-text h1 { font-size: 2rem; font-weight: 700; margin-bottom: 5px; }
+.greeting-text p { color: var(--text-muted); }
+.profile-avatar {
+    width: 45px; height: 45px; background: rgba(255,255,255,0.05); border: 1px solid var(--border-color);
+    border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 1.2rem; cursor: pointer;
+}
+
+/* Overview Cards */
+.overview-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 40px; }
+.dash-card { background: var(--bg-panel); border: 1px solid var(--border-color); border-radius: 16px; padding: 25px; display: flex; align-items: center; gap: 20px; }
+.stat-icon { width: 60px; height: 60px; background: rgba(200, 251, 46, 0.1); color: var(--accent); border-radius: 12px; display: flex; justify-content: center; align-items: center; font-size: 1.8rem; }
+.card-label { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 5px; }
+.dash-card h2 { font-size: 2rem; color: #fff; }
+
+/* Orders Section */
+.section-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+.section-header h3 { font-size: 1.3rem; }
+.btn-refresh { background: transparent; border: 1px solid var(--border-color); color: var(--text-main); padding: 8px 15px; border-radius: 8px; cursor: pointer; transition: 0.3s; display: flex; align-items: center; gap: 8px; }
+.btn-refresh:hover { background: rgba(255,255,255,0.05); }
+
+/* Table */
+.table-container { background: var(--bg-panel); border: 1px solid var(--border-color); border-radius: 16px; overflow-x: auto; padding: 20px; }
+.admin-table { width: 100%; border-collapse: collapse; text-align: left; }
+.admin-table th { color: var(--text-muted); font-size: 0.9rem; padding: 15px; border-bottom: 1px solid var(--border-color); font-weight: 500; }
+.admin-table td { padding: 15px; border-bottom: 1px solid var(--border-color); font-size: 0.95rem; }
+.admin-table tr:last-child td { border-bottom: none; }
+
+.status-badge { padding: 6px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 600; }
+.status-badge.pending { background: rgba(255, 177, 66, 0.1); color: var(--status-pending); border: 1px solid var(--status-pending); }
+.status-badge.completed { background: rgba(46, 213, 115, 0.1); color: var(--status-completed); border: 1px solid var(--status-completed); }
+
+.action-btn { background: var(--accent); color: #000; border: none; padding: 8px 15px; border-radius: 8px; font-weight: 600; cursor: pointer; transition: 0.3s; font-size: 0.85rem; }
+.action-btn:hover { opacity: 0.9; }
+.action-btn:disabled { background: #333; color: #777; cursor: not-allowed; }
+
+.empty-msg { text-align: center; color: var(--text-muted); padding: 30px; }
+/* Header Actions */
+.header-actions { display: flex; align-items: center; gap: 20px; }
+.header-icon {
+    position: relative;
+    font-size: 1.4rem;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: 0.3s;
+}
+.header-icon:hover { color: var(--accent); }
+.header-badge {
+    position: absolute;
+    top: -5px;
+    right: -8px;
+    background: #ff4757;
+    color: white;
+    font-size: 0.7rem;
+    font-weight: bold;
+    padding: 2px 6px;
+    border-radius: 50%;
+    border: 2px solid var(--bg-dark);
+}
+
+/* Admin Menu Grid */
+.menu-grid-admin {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+}
+.admin-menu-card {
+    background: var(--bg-panel);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 15px;
+    text-align: center;
+}
+.admin-menu-card img {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+.admin-menu-card h4 { color: #fff; font-size: 1rem; margin-bottom: 5px; }
+.admin-menu-card p { color: var(--accent); font-weight: 600; margin-bottom: 10px; }
+.admin-menu-card button {
+    background: transparent; border: 1px solid var(--text-muted); color: var(--text-muted);
+    padding: 5px 10px; border-radius: 5px; cursor: pointer; transition: 0.3s; width: 100%;
+}
+.admin-menu-card button:hover { border-color: var(--accent); color: var(--accent); }
+/* Admin Profile Dropdown */
+.profile-dropdown {
+    position: absolute;
+    right: 0;
+    top: 60px;
+    background: var(--bg-panel);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    width: 220px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    z-index: 100;
+    overflow: hidden;
+}
+.dropdown-header {
+    padding: 15px;
+    border-bottom: 1px solid var(--border-color);
+}
+.dropdown-header h4 { color: #fff; font-size: 1rem; margin-bottom: 2px; }
+.dropdown-header p { color: var(--text-muted); font-size: 0.8rem; }
+.dropdown-body { padding: 10px; }
+.dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    color: var(--text-muted);
+    text-decoration: none;
+    border-radius: 8px;
+    transition: 0.3s;
+    font-size: 0.9rem;
+}
+.dropdown-item:hover { background: rgba(255,255,255,0.05); color: #fff; }
+.dropdown-item.logout { color: #ff4757; }
+.dropdown-item.logout:hover { background: rgba(255, 71, 87, 0.1); }

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TasteForge Menu</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="top-bar">
+                <div class="left-action-group">
+                    <button class="icon-btn back-btn" id="dynamicBackBtn" title="Go Back">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="19" y1="12" x2="5" y2="12"></line>
+                            <polyline points="12 19 5 12 12 5"></polyline>
+                        </svg>
+                    </button>
+                    
+                    <a href="../index.html" class="logo-container" style="text-decoration: none;">
+                        <img src="../TasteForge_Logo.png" alt="TasteForge Logo" class="logo-icon" style="width: 28px; height: 28px; margin-right: 8px;">
+                        <span class="brand-name">TasteForge</span>
+                    </a>
+                </div>
+
+                <div class="search-container">
+                    <input type="text" id="searchInput" placeholder="Search meals...">
+                </div>
+                
+                <div class="actions">
+                    <button class="icon-btn" id="topCartBtn">🛒</button>
+                </div>
+            </div>
+        </header>
+
+        <nav class="filters">
+            <button class="filter-btn active" data-category="All">All</button>
+            <button class="filter-btn" data-category="High Protein">High Protein</button>
+            <button class="filter-btn" data-category="Cheat Day">Cheat Day</button>
+            <button class="filter-btn" data-category="Vegan">Vegan</button>
+            <button class="filter-btn" data-category="Low Carb">Low Carb</button>
+            <button class="icon-btn filter-icon">⚙️</button>
+        </nav>
+
+        <main class="menu-grid" id="menuGrid">
+        </main>
+    </div>
+
+    <div id="mealModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" id="closeMealModal">&times;</span>
+            <div id="mealModalBody" style="text-align: center; margin-top: 10px;">
+            </div>
+        </div>
+    </div>
+    
+    <div id="cartModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Your Cart 🛒</h2>
+                <span class="close-modal" id="closeCartModal">&times;</span>
+            </div>
+            <div class="modal-body" id="cartItemsContainer">
+                <p class="empty-cart-msg">Your cart is empty.</p>
+            </div>
+            <div class="modal-footer">
+                <div class="cart-total">Total: $<span id="cartTotal">0.00</span></div>
+                <button class="checkout-btn">Checkout</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

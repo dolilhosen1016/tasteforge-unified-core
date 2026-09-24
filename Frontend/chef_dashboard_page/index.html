@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TasteForge - Chef Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <div class="sidebar-top">
+                <div class="sidebar-header">
+                    <img src="../TasteForge_Logo.png" alt="Logo" class="logo-img" onerror="this.src='../TasteForge_Logo.png'">
+                    <h2>TasteForge</h2>
+                </div>
+                <ul class="nav-links">
+                    <li class="active" id="navKitchen"><a href="#"><i class="fa-solid fa-fire-burner"></i> Kitchen Display</a></li>
+                    <li id="navHistory"><a href="#"><i class="fa-solid fa-clipboard-check"></i> Cooked History</a></li>
+                    <li id="navInventory"><a href="#"><i class="fa-solid fa-boxes-stacked"></i> Inventory</a></li>
+                    <li id="navRecipes"><a href="#"><i class="fa-solid fa-book-open"></i> Recipes</a></li>
+                </ul>
+            </div>
+
+            <div class="sidebar-bottom">
+                <ul class="nav-links">
+                    <li><a href="#"><i class="fa-solid fa-gear"></i> Settings</a></li>
+                    <li><a href="#" id="logoutBtn"><i class="fa-solid fa-right-from-bracket"></i> Sign Out</a></li>
+                </ul>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            
+            <div class="top-navbar">
+                <div class="topbar-right">
+                    <div class="notification-bell">
+                        <i class="fa-regular fa-bell"></i>
+                        <span class="notify-badge" id="navNotifyBadge">0</span>
+                    </div>
+                    <div class="profile-menu">
+                        <div class="profile-icon">
+                            <i class="fa-solid fa-user-tie"></i>
+                        </div>
+                        <span class="profile-name" id="topbarChefName">Chef</span>
+                    </div>
+                </div>
+            </div>
+
+            <header class="top-header">
+                <div class="greeting">
+                    <h1>Kitchen Station <span class="wave">🔥</span></h1>
+                    <p>Welcome back, Chef <span id="chefNameDisplay">...</span></p>
+                </div>
+            </header>
+
+            <section class="orders-section" id="pendingSection">
+                <div class="section-header">
+                    <div class="header-title-group">
+                        <h2><i class="fa-solid fa-bell-concierge"></i> Pending Orders To Cook</h2>
+                        <span class="badge" id="pendingCount">0</span>
+                    </div>
+                    <a href="#" class="view-all-btn">View All <i class="fa-solid fa-arrow-right-long"></i></a>
+                </div>
+                
+                <div class="orders-grid" id="pendingOrdersContainer">
+                    </div>
+            </section>
+
+            <section class="orders-section" id="historySection" style="display: none;">
+                <div class="section-header">
+                    <div class="header-title-group">
+                        <h2><i class="fa-solid fa-clipboard-check"></i> Today's Cooked History</h2>
+                        <span class="badge" id="historyCount" style="background: linear-gradient(135deg, #28a745, #20c997);">0</span>
+                    </div>
+                </div>
+                
+                <div class="orders-grid" id="historyOrdersContainer">
+                    </div>
+            </section>
+
+            <section class="orders-section" id="recipesSection" style="display: none;">
+                <div class="section-header">
+                    <div class="header-title-group">
+                        <h2><i class="fa-solid fa-book-open"></i> Secret Recipes & Menu</h2>
+                        <span class="badge" id="recipesCount" style="background: linear-gradient(135deg, #007bff, #00d2ff);">0</span>
+                    </div>
+                </div>
+                
+                <div class="orders-grid" id="recipesContainer">
+                    </div>
+            </section>
+
+            <!-- 🔥 NEW: Inventory Section -->
+            <section class="orders-section" id="inventorySection" style="display: none;">
+                <div class="section-header">
+                    <div class="header-title-group">
+                        <h2><i class="fa-solid fa-boxes-stacked"></i> Kitchen Inventory</h2>
+                        <span class="badge" style="background: linear-gradient(135deg, #f39c12, #e67e22);">Stock</span>
+                    </div>
+                    <button class="btn-cook" style="width: auto; padding: 8px 15px; font-size: 13px;" onclick="renderChefInventory()">
+                        <i class="fa-solid fa-rotate-right"></i> Refresh
+                    </button>
+                </div>
+                
+                <div class="orders-grid" id="chefInventoryContainer">
+                    <!-- Javascript দিয়ে ডাটা এখানে আসবে -->
+                </div>
+            </section>
+            
+        </main>
+    </div>
+
+    <div id="customModal" class="custom-modal-overlay">
+        <div class="custom-modal-box">
+            <div class="modal-header-custom">
+                <h3 id="modalTitle"><i class="fa-solid fa-bell"></i> Notification</h3>
+                <button class="close-modal-btn" id="closeModalIcon"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="modal-body-custom" id="modalBody">
+                Message goes here...
+            </div>
+            <div class="modal-footer-custom">
+                <button class="btn-primary" id="modalOkBtn">Got it</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

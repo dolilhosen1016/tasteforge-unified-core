@@ -1,0 +1,434 @@
+[
+  {
+    "id": 1,
+    "name": "High Protein Bowl",
+    "description": "Grilled chicken, quinoa, and fresh roasted veggies.",
+    "calories": 510,
+    "price": 14.90,
+    "category": "High Protein",
+    "imageUrl": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=300&q=80",
+    "longDescription": "The ultimate fitness fuel designed for clean eating. Packed with tender flame-grilled chicken breast, marinated in garlic and Mediterranean herbs. Served over a fluffy bed of organic white quinoa.",
+    "ingredients": [
+      { "name": "Mushroom", "defaultQty": 1, "minQty": 0, "maxQty": 5, "extraPrice": 1.30, "extraCalories": 15 },
+      { "name": "Bell Pepper", "defaultQty": 2, "minQty": 0, "maxQty": 5, "extraPrice": 0.70, "extraCalories": 10 },
+      { "name": "Olives", "defaultQty": 0, "minQty": 0, "maxQty": 5, "extraPrice": 1.70, "extraCalories": 25 },
+      { "name": "Red Onion", "defaultQty": 1, "minQty": 0, "maxQty": 5, "extraPrice": 0.60, "extraCalories": 12 },
+      { "name": "Jalapeño", "defaultQty": 0, "minQty": 0, "maxQty": 5, "extraPrice": 0.60, "extraCalories": 5 },
+      { "name": "Extra Cheese", "defaultQty": 1, "minQty": 0, "maxQty": 3, "extraPrice": 1.20, "extraCalories": 80 }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Midnight Craving Pizza",
+    "description": "Classic pepperoni with extra melting mozzarella cheese.",
+    "calories": 640,
+    "price": 16.30,
+    "category": "Cheat Day",
+    "imageUrl": "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=300&q=80",
+    "longDescription": "Satisfy your late-night cravings with our classic hand-tossed pizza. Topped with generous amounts of premium, crispy pepperoni slices and buried under a thick layer of gooey, melting mozzarella cheese.",
+    "ingredients": [
+      { "name": "Mushroom", "defaultQty": 1, "minQty": 0, "maxQty": 5, "extraPrice": 1.30, "extraCalories": 15 },
+      { "name": "Bell Pepper", "defaultQty": 2, "minQty": 0, "maxQty": 5, "extraPrice": 0.70, "extraCalories": 10 },
+      { "name": "Olives", "defaultQty": 0, "minQty": 0, "maxQty": 5, "extraPrice": 1.70, "extraCalories": 25 },
+      { "name": "Red Onion", "defaultQty": 1, "minQty": 0, "maxQty": 5, "extraPrice": 0.60, "extraCalories": 12 },
+      { "name": "Jalapeño", "defaultQty": 0, "minQty": 0, "maxQty": 5, "extraPrice": 0.60, "extraCalories": 5 },
+      { "name": "Extra Cheese", "defaultQty": 1, "minQty": 0, "maxQty": 3, "extraPrice": 1.20, "extraCalories": 80 }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Cheesy Overload",
+    "description": "Four-cheese blend with a crispy, golden crust.",
+    "calories": 730,
+    "price": 15.20,
+    "category": "Cheat Day",
+    "imageUrl": "https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=300&q=80",
+    "longDescription": "A cheese lover's dream! This pizza features a luxurious blend of four distinct cheeses: Mozzarella, Cheddar, Parmesan, and a touch of Gorgonzola for a sharp kick.",
+    "ingredients": [
+      { "name": "Mushroom", "defaultQty": 1, "minQty": 0, "maxQty": 5, "extraPrice": 1.30, "extraCalories": 15 },
+      { "name": "Bell Pepper", "defaultQty": 2, "minQty": 0, "maxQty": 5, "extraPrice": 0.70, "extraCalories": 10 },
+      { "name": "Olives", "defaultQty": 0, "minQty": 0, "maxQty": 5, "extraPrice": 1.70, "extraCalories": 25 },
+      { "name": "Red Onion", "defaultQty": 1, "minQty": 0, "maxQty": 5, "extraPrice": 0.60, "extraCalories": 12 },
+      { "name": "Jalapeño", "defaultQty": 0, "minQty": 0, "maxQty": 5, "extraPrice": 0.60, "extraCalories": 5 },
+      { "name": "Extra Cheese", "defaultQty": 1, "minQty": 0, "maxQty": 3, "extraPrice": 1.20, "extraCalories": 80 }
+    ]
+  },
+  {
+    "id": 4,
+    "name": "Vegan Green Power",
+    "description": "Spinach, avocado, and edamame with a light lemon dressing.",
+    "calories": 450,
+    "price": 13.40,
+    "category": "Vegan",
+    "imageUrl": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=300&q=80",
+    "longDescription": "A refreshing and nutrient-dense bowl designed to invigorate your day. Fresh baby spinach forms the base, topped with creamy Hass avocado slices, protein-rich edamame beans, and crunchy cucumber.",
+    "ingredients": [
+      { "name": "Mushroom", "defaultQty": 1, "minQty": 0, "maxQty": 5, "extraPrice": 1.30, "extraCalories": 15 },
+      { "name": "Bell Pepper", "defaultQty": 2, "minQty": 0, "maxQty": 5, "extraPrice": 0.70, "extraCalories": 10 },
+      { "name": "Olives", "defaultQty": 0, "minQty": 0, "maxQty": 5, "extraPrice": 1.70, "extraCalories": 25 },
+      { "name": "Red Onion", "defaultQty": 1, "minQty": 0, "maxQty": 5, "extraPrice": 0.60, "extraCalories": 12 },
+      { "name": "Jalapeño", "defaultQty": 0, "minQty": 0, "maxQty": 5, "extraPrice": 0.60, "extraCalories": 5 },
+      { "name": "Extra Cheese", "defaultQty": 1, "minQty": 0, "maxQty": 3, "extraPrice": 1.20, "extraCalories": 80 }
+    ]
+  },
+  {
+    "id": 5,
+    "name": "Gym Fuel Platter",
+    "description": "Lean beef strips, sweet potato mash, and steamed broccoli.",
+    "calories": 610,
+    "price": 14.30,
+    "category": "High Protein",
+    "imageUrl": "https://images.unsplash.com/photo-1532550907401-a500c9a57435?auto=format&fit=crop&w=300&q=80",
+    "longDescription": "The perfect post-workout meal for muscle recovery. Features tender, lean beef strips cooked with minimal oil, served alongside a generous portion of complex carbohydrates from our homemade sweet potato mash.",
+    "ingredients": [
+      { "name": "Mushroom", "defaultQty": 1, "minQty": 0, "maxQty": 5, "extraPrice": 1.30, "extraCalories": 15 },
+      { "name": "Bell Pepper", "defaultQty": 2, "minQty": 0, "maxQty": 5, "extraPrice": 0.70, "extraCalories": 10 },
+      { "name": "Olives", "defaultQty": 0, "minQty": 0, "maxQty": 5, "extraPrice": 1.70, "extraCalories": 25 },
+      { "name": "Red Onion", "defaultQty": 1, "minQty": 0, "maxQty": 5, "extraPrice": 0.60, "extraCalories": 12 },
+      { "name": "Jalapeño", "defaultQty": 0, "minQty": 0, "maxQty": 5, "extraPrice": 0.60, "extraCalories": 5 },
+      { "name": "Extra Cheese", "defaultQty": 1, "minQty": 0, "maxQty": 3, "extraPrice": 1.20, "extraCalories": 80 }
+    ]
+  },
+  {
+    "id": 6,
+    "name": "Spicy Peri Chicken",
+    "description": "Flame-grilled chicken breast with fiery peri-peri sauce.",
+    "calories": 540,
+    "price": 15.80,
+    "category": "High Protein",
+    "imageUrl": "https://images.unsplash.com/photo-1598514982205-f36b96d1e8d4?auto=format&fit=crop&w=300&q=80",
+    "longDescription": "Bring the heat with our signature spicy peri-peri chicken. Flame-grilled to seal in the juices, generously basted with our fiery African bird's eye chili sauce.",
+    "ingredients": [
+      { "name": "Mushroom", "defaultQty": 1, "minQty": 0, "maxQty": 5, "extraPrice": 1.30, "extraCalories": 15 },
+      { "name": "Bell Pepper", "defaultQty": 2, "minQty": 0, "maxQty": 5, "extraPrice": 0.70, "extraCalories": 10 },
+      { "name": "Olives", "defaultQty": 0, "minQty": 0, "maxQty": 5, "extraPrice": 1.70, "extraCalories": 25 },
+      { "name": "Red Onion", "defaultQty": 1, "minQty": 0, "maxQty": 5, "extraPrice": 0.60, "extraCalories": 12 },
+      { "name": "Jalapeño", "defaultQty": 0, "minQty": 0, "maxQty": 5, "extraPrice": 0.60, "extraCalories": 5 },
+      { "name": "Extra Cheese", "defaultQty": 1, "minQty": 0, "maxQty": 3, "extraPrice": 1.20, "extraCalories": 80 }
+    ]
+  },
+  {
+    "id": 7,
+    "name": "Keto Salmon Asparagus",
+    "description": "Pan-seared salmon fillet paired with buttery asparagus.",
+    "calories": 420,
+    "price": 17.50,
+    "category": "Low Carb",
+    "imageUrl": "https://images.unsplash.com/photo-1467003909585-2f8a72700288?auto=format&fit=crop&w=300&q=80",
+    "longDescription": "Rich in omega-3s and perfectly keto-friendly. We pan-sear a fresh Atlantic salmon fillet until the skin is perfectly crisp, served over a bed of tender asparagus spears.",
+    "ingredients": [
+      { "name": "Mushroom", "defaultQty": 1, "minQty": 0, "maxQty": 5, "extraPrice": 1.30, "extraCalories": 15 },
+      { "name": "Bell Pepper", "defaultQty": 2, "minQty": 0, "maxQty": 5, "extraPrice": 0.70, "extraCalories": 10 },
+      { "name": "Olives", "defaultQty": 0, "minQty": 0, "maxQty": 5, "extraPrice": 1.70, "extraCalories": 25 },
+      { "name": "Red Onion", "defaultQty": 1, "minQty": 0, "maxQty": 5, "extraPrice": 0.60, "extraCalories": 12 },
+      { "name": "Jalapeño", "defaultQty": 0, "minQty": 0, "maxQty": 5, "extraPrice": 0.60, "extraCalories": 5 },
+      { "name": "Extra Cheese", "defaultQty": 1, "minQty": 0, "maxQty": 3, "extraPrice": 1.20, "extraCalories": 80 }
+    ]
+  },
+  {
+    "id": 8,
+    "name": "Plant-Based Burger",
+    "description": "Beyond meat patty, vegan cheese, and fresh lettuce.",
+    "calories": 580,
+    "price": 14.00,
+    "category": "Vegan",
+    "imageUrl": "https://images.unsplash.com/photo-1520072959219-c595dc870360?auto=format&fit=crop&w=300&q=80",
+    "longDescription": "100% plant-based, 100% delicious. This burger features a juicy Beyond Meat patty that cooks and tastes just like beef. Layered with dairy-free vegan cheddar and crisp lettuce.",
+    "ingredients": [
+      { "name": "Mushroom", "defaultQty": 1, "minQty": 0, "maxQty": 5, "extraPrice": 1.30, "extraCalories": 15 },
+      { "name": "Bell Pepper", "defaultQty": 2, "minQty": 0, "maxQty": 5, "extraPrice": 0.70, "extraCalories": 10 },
+      { "name": "Olives", "defaultQty": 0, "minQty": 0, "maxQty": 5, "extraPrice": 1.70, "extraCalories": 25 },
+      { "name": "Red Onion", "defaultQty": 1, "minQty": 0, "maxQty": 5, "extraPrice": 0.60, "extraCalories": 12 },
+      { "name": "Jalapeño", "defaultQty": 0, "minQty": 0, "maxQty": 5, "extraPrice": 0.60, "extraCalories": 5 },
+      { "name": "Extra Cheese", "defaultQty": 1, "minQty": 0, "maxQty": 3, "extraPrice": 1.20, "extraCalories": 80 }
+    ]
+  },
+  {
+    "id": 9,
+    "name": "Double Smash Cheeseburger",
+    "description": "Two juicy beef patties smashed with double cheddar.",
+    "calories": 850,
+    "price": 13.90,
+    "category": "Cheat Day",
+    "imageUrl": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=300&q=80",
+    "longDescription": "Experience the ultimate culinary cheat meal. Our signature smash burger features two 100% premium angus beef patties, smashed on a screaming hot cast-iron griddle.",
+    "ingredients": [
+      { "name": "Mushroom", "defaultQty": 1, "minQty": 0, "maxQty": 5, "extraPrice": 1.30, "extraCalories": 15 },
+      { "name": "Bell Pepper", "defaultQty": 2, "minQty": 0, "maxQty": 5, "extraPrice": 0.70, "extraCalories": 10 },
+      { "name": "Olives", "defaultQty": 0, "minQty": 0, "maxQty": 5, "extraPrice": 1.70, "extraCalories": 25 },
+      { "name": "Red Onion", "defaultQty": 1, "minQty": 0, "maxQty": 5, "extraPrice": 0.60, "extraCalories": 12 },
+      { "name": "Jalapeño", "defaultQty": 0, "minQty": 0, "maxQty": 5, "extraPrice": 0.60, "extraCalories": 5 },
+      { "name": "Extra Cheese", "defaultQty": 1, "minQty": 0, "maxQty": 3, "extraPrice": 1.20, "extraCalories": 80 }
+    ]
+  },
+  {
+    "id": 10,
+    "name": "Grilled Steak & Eggs",
+    "description": "Premium sirloin steak with sunny-side-up farm eggs.",
+    "calories": 680,
+    "price": 18.20,
+    "category": "High Protein",
+    "imageUrl": "https://images.unsplash.com/photo-1600891964092-4316c288032e?auto=format&fit=crop&w=300&q=80",
+    "longDescription": "The breakfast of champions, available all day. A tender, seasoned sirloin steak grilled to your liking, paired with two sunny-side-up free-range eggs.",
+    "ingredients": [
+      { "name": "Mushroom", "defaultQty": 1, "minQty": 0, "maxQty": 5, "extraPrice": 1.30, "extraCalories": 15 },
+      { "name": "Bell Pepper", "defaultQty": 2, "minQty": 0, "maxQty": 5, "extraPrice": 0.70, "extraCalories": 10 },
+      { "name": "Olives", "defaultQty": 0, "minQty": 0, "maxQty": 5, "extraPrice": 1.70, "extraCalories": 25 },
+      { "name": "Red Onion", "defaultQty": 1, "minQty": 0, "maxQty": 5, "extraPrice": 0.60, "extraCalories": 12 },
+      { "name": "Jalapeño", "defaultQty": 0, "minQty": 0, "maxQty": 5, "extraPrice": 0.60, "extraCalories": 5 },
+      { "name": "Extra Cheese", "defaultQty": 1, "minQty": 0, "maxQty": 3, "extraPrice": 1.20, "extraCalories": 80 }
+    ]
+  },
+  {
+    "id": 11,
+    "name": "Tofu Stir-Fry Feast",
+    "description": "Crispy tofu tossed with crisp veggies in soy-ginger sauce.",
+    "calories": 390,
+    "price": 12.50,
+    "category": "Vegan",
+    "imageUrl": "https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=300&q=80",
+    "longDescription": "A vibrant and crunchy delight. Cubes of firm tofu are pan-fried until golden and crispy, then tossed in a hot wok with fresh bell peppers and snap peas.",
+    "ingredients": [
+      { "name": "Mushroom", "defaultQty": 1, "minQty": 0, "maxQty": 5, "extraPrice": 1.30, "extraCalories": 15 },
+      { "name": "Bell Pepper", "defaultQty": 2, "minQty": 0, "maxQty": 5, "extraPrice": 0.70, "extraCalories": 10 },
+      { "name": "Olives", "defaultQty": 0, "minQty": 0, "maxQty": 5, "extraPrice": 1.70, "extraCalories": 25 },
+      { "name": "Red Onion", "defaultQty": 1, "minQty": 0, "maxQty": 5, "extraPrice": 0.60, "extraCalories": 12 },
+      { "name": "Jalapeño", "defaultQty": 0, "minQty": 0, "maxQty": 5, "extraPrice": 0.60, "extraCalories": 5 },
+      { "name": "Extra Cheese", "defaultQty": 1, "minQty": 0, "maxQty": 3, "extraPrice": 1.20, "extraCalories": 80 }
+    ]
+  },
+  {
+    "id": 12,
+    "name": "Zucchini Noodle Pasta",
+    "description": "Zoodles tossed in a rich, garlic-infused olive oil.",
+    "calories": 310,
+    "price": 11.90,
+    "category": "Low Carb",
+    "imageUrl": "https://images.unsplash.com/photo-1588166524941-3bf61a9c41db?auto=format&fit=crop&w=300&q=80",
+    "longDescription": "Pasta cravings without the carbs! Fresh zucchini spiralized into 'zoodles', quickly sautéed to maintain their crunch, and tossed in a fragrant garlic olive oil.",
+    "ingredients": [
+      { "name": "Mushroom", "defaultQty": 1, "minQty": 0, "maxQty": 5, "extraPrice": 1.30, "extraCalories": 15 },
+      { "name": "Bell Pepper", "defaultQty": 2, "minQty": 0, "maxQty": 5, "extraPrice": 0.70, "extraCalories": 10 },
+      { "name": "Olives", "defaultQty": 0, "minQty": 0, "maxQty": 5, "extraPrice": 1.70, "extraCalories": 25 },
+      { "name": "Red Onion", "defaultQty": 1, "minQty": 0, "maxQty": 5, "extraPrice": 0.60, "extraCalories": 12 },
+      { "name": "Jalapeño", "defaultQty": 0, "minQty": 0, "maxQty": 5, "extraPrice": 0.60, "extraCalories": 5 },
+      { "name": "Extra Cheese", "defaultQty": 1, "minQty": 0, "maxQty": 3, "extraPrice": 1.20, "extraCalories": 80 }
+    ]
+  },
+  {
+    "id": 13,
+    "name": "Ultimate BBQ Ribs",
+    "description": "Slow-cooked pork ribs glazed with smoky hickory BBQ sauce.",
+    "calories": 920,
+    "price": 19.90,
+    "category": "Cheat Day",
+    "imageUrl": "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=300&q=80",
+    "longDescription": "Fall-off-the-bone tenderness. Our ribs are slow-cooked for 12 hours, then finished on the grill with a thick, sticky coating of our house-made smoky hickory BBQ sauce.",
+    "ingredients": [
+      { "name": "Mushroom", "defaultQty": 1, "minQty": 0, "maxQty": 5, "extraPrice": 1.30, "extraCalories": 15 },
+      { "name": "Bell Pepper", "defaultQty": 2, "minQty": 0, "maxQty": 5, "extraPrice": 0.70, "extraCalories": 10 },
+      { "name": "Olives", "defaultQty": 0, "minQty": 0, "maxQty": 5, "extraPrice": 1.70, "extraCalories": 25 },
+      { "name": "Red Onion", "defaultQty": 1, "minQty": 0, "maxQty": 5, "extraPrice": 0.60, "extraCalories": 12 },
+      { "name": "Jalapeño", "defaultQty": 0, "minQty": 0, "maxQty": 5, "extraPrice": 0.60, "extraCalories": 5 },
+      { "name": "Extra Cheese", "defaultQty": 1, "minQty": 0, "maxQty": 3, "extraPrice": 1.20, "extraCalories": 80 }
+    ]
+  },
+  {
+    "id": 14,
+    "name": "Lean Turkey Meatballs",
+    "description": "Baked turkey meatballs over high-protein lentil pasta.",
+    "calories": 480,
+    "price": 13.50,
+    "category": "High Protein",
+    "imageUrl": "https://images.unsplash.com/photo-1529042410759-befb1204b468?auto=format&fit=crop&w=300&q=80",
+    "longDescription": "A healthy Italian classic. Lean ground turkey seasoned with Italian herbs, baked until juicy, and served over a bed of high-protein lentil pasta.",
+    "ingredients": [
+      { "name": "Mushroom", "defaultQty": 1, "minQty": 0, "maxQty": 5, "extraPrice": 1.30, "extraCalories": 15 },
+      { "name": "Bell Pepper", "defaultQty": 2, "minQty": 0, "maxQty": 5, "extraPrice": 0.70, "extraCalories": 10 },
+      { "name": "Olives", "defaultQty": 0, "minQty": 0, "maxQty": 5, "extraPrice": 1.70, "extraCalories": 25 },
+      { "name": "Red Onion", "defaultQty": 1, "minQty": 0, "maxQty": 5, "extraPrice": 0.60, "extraCalories": 12 },
+      { "name": "Jalapeño", "defaultQty": 0, "minQty": 0, "maxQty": 5, "extraPrice": 0.60, "extraCalories": 5 },
+      { "name": "Extra Cheese", "defaultQty": 1, "minQty": 0, "maxQty": 3, "extraPrice": 1.20, "extraCalories": 80 }
+    ]
+  },
+  {
+    "id": 15,
+    "name": "Cauliflower Margherita",
+    "description": "Low-carb cauliflower crust topped with fresh tomatoes and basil.",
+    "calories": 400,
+    "price": 15.00,
+    "category": "Low Carb",
+    "imageUrl": "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&w=300&q=80",
+    "longDescription": "Pizza without the guilt. Our crispy cauliflower crust is a low-carb alternative that doesn't compromise on taste. Topped with sweet crushed tomatoes and fresh mozzarella.",
+    "ingredients": [
+      { "name": "Mushroom", "defaultQty": 1, "minQty": 0, "maxQty": 5, "extraPrice": 1.30, "extraCalories": 15 },
+      { "name": "Bell Pepper", "defaultQty": 2, "minQty": 0, "maxQty": 5, "extraPrice": 0.70, "extraCalories": 10 },
+      { "name": "Olives", "defaultQty": 0, "minQty": 0, "maxQty": 5, "extraPrice": 1.70, "extraCalories": 25 },
+      { "name": "Red Onion", "defaultQty": 1, "minQty": 0, "maxQty": 5, "extraPrice": 0.60, "extraCalories": 12 },
+      { "name": "Jalapeño", "defaultQty": 0, "minQty": 0, "maxQty": 5, "extraPrice": 0.60, "extraCalories": 5 },
+      { "name": "Extra Cheese", "defaultQty": 1, "minQty": 0, "maxQty": 3, "extraPrice": 1.20, "extraCalories": 80 }
+    ]
+  },
+  {
+    "id": 16,
+    "name": "Vegan Buddha Bowl",
+    "description": "Roasted chickpeas, sweet potatoes, and tahini dressing.",
+    "calories": 460,
+    "price": 13.80,
+    "category": "Vegan",
+    "imageUrl": "https://images.unsplash.com/photo-1511690656952-34342bb7c2f2?auto=format&fit=crop&w=300&q=80",
+    "longDescription": "Balance in a bowl. A nourishing combination of spiced roasted chickpeas, caramelized sweet potato chunks, shredded red cabbage, and kale.",
+    "ingredients": [
+      { "name": "Mushroom", "defaultQty": 1, "minQty": 0, "maxQty": 5, "extraPrice": 1.30, "extraCalories": 15 },
+      { "name": "Bell Pepper", "defaultQty": 2, "minQty": 0, "maxQty": 5, "extraPrice": 0.70, "extraCalories": 10 },
+      { "name": "Olives", "defaultQty": 0, "minQty": 0, "maxQty": 5, "extraPrice": 1.70, "extraCalories": 25 },
+      { "name": "Red Onion", "defaultQty": 1, "minQty": 0, "maxQty": 5, "extraPrice": 0.60, "extraCalories": 12 },
+      { "name": "Jalapeño", "defaultQty": 0, "minQty": 0, "maxQty": 5, "extraPrice": 0.60, "extraCalories": 5 },
+      { "name": "Extra Cheese", "defaultQty": 1, "minQty": 0, "maxQty": 3, "extraPrice": 1.20, "extraCalories": 80 }
+    ]
+  },
+  {
+    "id": 17,
+    "name": "Loaded Nacho Supreme",
+    "description": "Corn tortilla chips buried under chili, cheese, and jalapeños.",
+    "calories": 810,
+    "price": 12.90,
+    "category": "Cheat Day",
+    "imageUrl": "https://images.unsplash.com/photo-1513456852971-30c0b8199d4d?auto=format&fit=crop&w=300&q=80",
+    "longDescription": "The ultimate sharing plate. Crunchy corn tortilla chips piled high and smothered in rich beef chili, melted nacho cheese sauce, and fresh pico de gallo.",
+    "ingredients": [
+      { "name": "Mushroom", "defaultQty": 1, "minQty": 0, "maxQty": 5, "extraPrice": 1.30, "extraCalories": 15 },
+      { "name": "Bell Pepper", "defaultQty": 2, "minQty": 0, "maxQty": 5, "extraPrice": 0.70, "extraCalories": 10 },
+      { "name": "Olives", "defaultQty": 0, "minQty": 0, "maxQty": 5, "extraPrice": 1.70, "extraCalories": 25 },
+      { "name": "Red Onion", "defaultQty": 1, "minQty": 0, "maxQty": 5, "extraPrice": 0.60, "extraCalories": 12 },
+      { "name": "Jalapeño", "defaultQty": 0, "minQty": 0, "maxQty": 5, "extraPrice": 0.60, "extraCalories": 5 },
+      { "name": "Extra Cheese", "defaultQty": 1, "minQty": 0, "maxQty": 3, "extraPrice": 1.20, "extraCalories": 80 }
+    ]
+  },
+  {
+    "id": 18,
+    "name": "Chicken Teriyaki Prep",
+    "description": "Grilled chicken glazed in sweet teriyaki with jasmine rice.",
+    "calories": 530,
+    "price": 14.50,
+    "category": "High Protein",
+    "imageUrl": "https://images.unsplash.com/photo-1580476262798-bddd9f4b7369?auto=format&fit=crop&w=300&q=80",
+    "longDescription": "A clean, protein-packed classic. Juicy grilled chicken thighs chopped and glazed in a sticky, sweet, and savory teriyaki sauce. Served beside fluffy steamed jasmine rice.",
+    "ingredients": [
+      { "name": "Mushroom", "defaultQty": 1, "minQty": 0, "maxQty": 5, "extraPrice": 1.30, "extraCalories": 15 },
+      { "name": "Bell Pepper", "defaultQty": 2, "minQty": 0, "maxQty": 5, "extraPrice": 0.70, "extraCalories": 10 },
+      { "name": "Olives", "defaultQty": 0, "minQty": 0, "maxQty": 5, "extraPrice": 1.70, "extraCalories": 25 },
+      { "name": "Red Onion", "defaultQty": 1, "minQty": 0, "maxQty": 5, "extraPrice": 0.60, "extraCalories": 12 },
+      { "name": "Jalapeño", "defaultQty": 0, "minQty": 0, "maxQty": 5, "extraPrice": 0.60, "extraCalories": 5 },
+      { "name": "Extra Cheese", "defaultQty": 1, "minQty": 0, "maxQty": 3, "extraPrice": 1.20, "extraCalories": 80 }
+    ]
+  },
+  {
+    "id": 19,
+    "name": "Garlic Butter Shrimp",
+    "description": "Juicy shrimp sautéed in rich garlic butter and herbs.",
+    "calories": 350,
+    "price": 16.50,
+    "category": "Low Carb",
+    "imageUrl": "https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=300&q=80",
+    "longDescription": "A light yet incredibly flavorful dish. Plump, juicy shrimp are quickly sautéed in a pan with generous amounts of butter, minced garlic, and fresh parsley.",
+    "ingredients": [
+      { "name": "Mushroom", "defaultQty": 1, "minQty": 0, "maxQty": 5, "extraPrice": 1.30, "extraCalories": 15 },
+      { "name": "Bell Pepper", "defaultQty": 2, "minQty": 0, "maxQty": 5, "extraPrice": 0.70, "extraCalories": 10 },
+      { "name": "Olives", "defaultQty": 0, "minQty": 0, "maxQty": 5, "extraPrice": 1.70, "extraCalories": 25 },
+      { "name": "Red Onion", "defaultQty": 1, "minQty": 0, "maxQty": 5, "extraPrice": 0.60, "extraCalories": 12 },
+      { "name": "Jalapeño", "defaultQty": 0, "minQty": 0, "maxQty": 5, "extraPrice": 0.60, "extraCalories": 5 },
+      { "name": "Extra Cheese", "defaultQty": 1, "minQty": 0, "maxQty": 3, "extraPrice": 1.20, "extraCalories": 80 }
+    ]
+  },
+  {
+    "id": 20,
+    "name": "Lentil & Spinach Curry",
+    "description": "Hearty Indian-spiced lentil stew served with vegan naan.",
+    "calories": 410,
+    "price": 12.20,
+    "category": "Vegan",
+    "imageUrl": "https://images.unsplash.com/photo-1585937421612-70a008356fbe?auto=format&fit=crop&w=300&q=80",
+    "longDescription": "Comfort in a bowl. This traditional Indian-inspired dal is made with red lentils slow-cooked with tomatoes, ginger, cumin, and fresh spinach leaves.",
+    "ingredients": [
+      { "name": "Mushroom", "defaultQty": 1, "minQty": 0, "maxQty": 5, "extraPrice": 1.30, "extraCalories": 15 },
+      { "name": "Bell Pepper", "defaultQty": 2, "minQty": 0, "maxQty": 5, "extraPrice": 0.70, "extraCalories": 10 },
+      { "name": "Olives", "defaultQty": 0, "minQty": 0, "maxQty": 5, "extraPrice": 1.70, "extraCalories": 25 },
+      { "name": "Red Onion", "defaultQty": 1, "minQty": 0, "maxQty": 5, "extraPrice": 0.60, "extraCalories": 12 },
+      { "name": "Jalapeño", "defaultQty": 0, "minQty": 0, "maxQty": 5, "extraPrice": 0.60, "extraCalories": 5 },
+      { "name": "Extra Cheese", "defaultQty": 1, "minQty": 0, "maxQty": 3, "extraPrice": 1.20, "extraCalories": 80 }
+    ]
+  },
+  {
+    "id": 21,
+    "name": "Classic Smash Burger",
+    "description": "A single perfectly crusted beef patty with secret sauce.",
+    "calories": 720,
+    "price": 14.50,
+    "category": "Cheat Day",
+    "imageUrl": "https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=300&q=80",
+    "longDescription": "Sometimes simplicity is best. A single, thick angus beef patty smashed on the grill for that iconic crispy edge. Topped with American cheese, pickles, and onions.",
+    "ingredients": [
+      { "name": "Mushroom", "defaultQty": 1, "minQty": 0, "maxQty": 5, "extraPrice": 1.30, "extraCalories": 15 },
+      { "name": "Bell Pepper", "defaultQty": 2, "minQty": 0, "maxQty": 5, "extraPrice": 0.70, "extraCalories": 10 },
+      { "name": "Olives", "defaultQty": 0, "minQty": 0, "maxQty": 5, "extraPrice": 1.70, "extraCalories": 25 },
+      { "name": "Red Onion", "defaultQty": 1, "minQty": 0, "maxQty": 5, "extraPrice": 0.60, "extraCalories": 12 },
+      { "name": "Jalapeño", "defaultQty": 0, "minQty": 0, "maxQty": 5, "extraPrice": 0.60, "extraCalories": 5 },
+      { "name": "Extra Cheese", "defaultQty": 1, "minQty": 0, "maxQty": 3, "extraPrice": 1.20, "extraCalories": 80 }
+    ]
+  },
+  {
+    "id": 22,
+    "name": "Creamy Chicken Alfredo",
+    "description": "Fettuccine pasta smothered in a rich parmesan cream sauce.",
+    "calories": 810,
+    "price": 16.00,
+    "category": "High Protein",
+    "imageUrl": "https://images.unsplash.com/photo-1645112411341-6c4fd023714a?auto=format&fit=crop&w=300&q=80",
+    "longDescription": "Indulgent and packed with protein. Al dente fettuccine pasta is tossed in a rich, velvety sauce made from heavy cream, garlic, and aged parmesan cheese.",
+    "ingredients": [
+      { "name": "Mushroom", "defaultQty": 1, "minQty": 0, "maxQty": 5, "extraPrice": 1.30, "extraCalories": 15 },
+      { "name": "Bell Pepper", "defaultQty": 2, "minQty": 0, "maxQty": 5, "extraPrice": 0.70, "extraCalories": 10 },
+      { "name": "Olives", "defaultQty": 0, "minQty": 0, "maxQty": 5, "extraPrice": 1.70, "extraCalories": 25 },
+      { "name": "Red Onion", "defaultQty": 1, "minQty": 0, "maxQty": 5, "extraPrice": 0.60, "extraCalories": 12 },
+      { "name": "Jalapeño", "defaultQty": 0, "minQty": 0, "maxQty": 5, "extraPrice": 0.60, "extraCalories": 5 },
+      { "name": "Extra Cheese", "defaultQty": 1, "minQty": 0, "maxQty": 3, "extraPrice": 1.20, "extraCalories": 80 }
+    ]
+  },
+  {
+    "id": 23,
+    "name": "Spicy Black Bean Burger",
+    "description": "Homemade black bean patty with spicy chipotle mayo.",
+    "calories": 520,
+    "price": 13.50,
+    "category": "Vegan",
+    "imageUrl": "https://images.unsplash.com/photo-1520072959219-c595dc870360?auto=format&fit=crop&w=300&q=80",
+    "longDescription": "A vegetarian delight with a kick. Our house-made patty blends black beans, corn, and smoky spices. Served crispy on the outside and tender inside.",
+    "ingredients": [
+      { "name": "Mushroom", "defaultQty": 1, "minQty": 0, "maxQty": 5, "extraPrice": 1.30, "extraCalories": 15 },
+      { "name": "Bell Pepper", "defaultQty": 2, "minQty": 0, "maxQty": 5, "extraPrice": 0.70, "extraCalories": 10 },
+      { "name": "Olives", "defaultQty": 0, "minQty": 0, "maxQty": 5, "extraPrice": 1.70, "extraCalories": 25 },
+      { "name": "Red Onion", "defaultQty": 1, "minQty": 0, "maxQty": 5, "extraPrice": 0.60, "extraCalories": 12 },
+      { "name": "Jalapeño", "defaultQty": 0, "minQty": 0, "maxQty": 5, "extraPrice": 0.60, "extraCalories": 5 },
+      { "name": "Extra Cheese", "defaultQty": 1, "minQty": 0, "maxQty": 3, "extraPrice": 1.20, "extraCalories": 80 }
+    ]
+  },
+  {
+    "id": 24,
+    "name": "Seafood Linguine Pasta",
+    "description": "Mussels, shrimp, and squid in a savory marinara sauce.",
+    "calories": 650,
+    "price": 18.90,
+    "category": "Cheat Day",
+    "imageUrl": "https://images.unsplash.com/photo-1563379926898-05f4575a45d8?auto=format&fit=crop&w=300&q=80",
+    "longDescription": "A taste of the ocean. This elegant dish features a generous mix of fresh mussels, tender shrimp, and calamari rings, all simmered slowly in a rich tomato marinara sauce.",
+    "ingredients": [
+      { "name": "Mushroom", "defaultQty": 1, "minQty": 0, "maxQty": 5, "extraPrice": 1.30, "extraCalories": 15 },
+      { "name": "Bell Pepper", "defaultQty": 2, "minQty": 0, "maxQty": 5, "extraPrice": 0.70, "extraCalories": 10 },
+      { "name": "Olives", "defaultQty": 0, "minQty": 0, "maxQty": 5, "extraPrice": 1.70, "extraCalories": 25 },
+      { "name": "Red Onion", "defaultQty": 1, "minQty": 0, "maxQty": 5, "extraPrice": 0.60, "extraCalories": 12 },
+      { "name": "Jalapeño", "defaultQty": 0, "minQty": 0, "maxQty": 5, "extraPrice": 0.60, "extraCalories": 5 },
+      { "name": "Extra Cheese", "defaultQty": 1, "minQty": 0, "maxQty": 3, "extraPrice": 1.20, "extraCalories": 80 }
+    ]
+  }
+]

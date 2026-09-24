@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help Center & Privacy | TasteForge</title>
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="background-container"></div>
+
+    <header class="navbar">
+        <div class="logo">
+            <a href="../index.html" style="display: flex; align-items: center; gap: 10px; text-decoration: none;">
+                <img src="../TasteForge_Logo.png" alt="TasteForge Logo Icon" class="logo-icon">
+                <span class="logo-text">TasteForge</span>
+            </a>
+        </div>
+        
+        <nav class="nav-links">
+            <a href="../index.html">Home</a>
+            <a href="../menu_page/index.html">Menu</a>
+            <a href="../how_it_works_page/index.html">How It Works</a>
+            <a href="../about_page/index.html">About</a>
+        </nav>
+
+        <div class="nav-actions-right">
+            <div class="menu-icon" id="menuBtn">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="pointer-events: none;">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </div>
+        </div>
+
+        <div class="dropdown-menu" id="dropdownMenu">
+            <a href="index.html" class="dropdown-item active">Help & Legal</a>
+            <a href="../contact_page/index.html" class="dropdown-item">Contact Us</a>
+        </div>
+    </header>
+
+    <main class="help-container">
+        
+        <div class="help-header">
+            <h1>How can we help you?</h1>
+            <p>Find answers, get support, or review our policies.</p>
+        </div>
+
+        <div class="tab-navigation">
+            <button class="tab-btn active" data-target="faq-section">FAQ & Support</button>
+            <button class="tab-btn" data-target="privacy-section">Privacy Policy</button>
+        </div>
+
+        <div id="faq-section" class="tab-content active">
+            <div class="search-bar glass-panel">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" placeholder="Search for help...">
+            </div>
+
+            <div class="help-grid">
+                <div class="faq-column">
+                    <h3>Popular Topics</h3>
+                    <div class="faq-list">
+                        <div class="faq-item glass-panel">
+                            <div class="faq-question">How do I build my own meal? <i class="fa-solid fa-chevron-right"></i></div>
+                            <div class="faq-answer">Simply go to our Menu page, select your preferred base, and follow the step-by-step process to add proteins, toppings, and sauces. Real-time nutrition facts will update automatically!</div>
+                        </div>
+                        <div class="faq-item glass-panel">
+                            <div class="faq-question">How long does delivery take? <i class="fa-solid fa-chevron-right"></i></div>
+                            <div class="faq-answer">Standard delivery usually takes 30-45 minutes depending on your location and traffic conditions. You can track your order live from your dashboard.</div>
+                        </div>
+                        <div class="faq-item glass-panel">
+                            <div class="faq-question">Can I modify my order after placing? <i class="fa-solid fa-chevron-right"></i></div>
+                            <div class="faq-answer">You can modify or cancel your order within the first 5 minutes of placing it. After that, our chefs start preparing your meal immediately.</div>
+                        </div>
+                        <div class="faq-item glass-panel">
+                            <div class="faq-question">Do you offer subscriptions? <i class="fa-solid fa-chevron-right"></i></div>
+                            <div class="faq-answer">Yes! We offer weekly and monthly meal prep subscriptions. You can set your dietary preferences and let us handle your meals.</div>
+                        </div>
+                        <div class="faq-item glass-panel">
+                            <div class="faq-question">Is the food halal? <i class="fa-solid fa-chevron-right"></i></div>
+                            <div class="faq-answer">Absolutely. All our meat and poultry ingredients are strictly 100% certified halal.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-card glass-panel">
+                    <h2>Still need help?</h2>
+                    <p>We're here for you.</p>
+                    <div class="contact-options">
+                        <div class="contact-method">
+                            <i class="fa-regular fa-comment-dots"></i>
+                            <div>
+                                <h4>Live Chat</h4>
+                                <span>Talk to our support</span>
+                            </div>
+                        </div>
+                        <div class="contact-method">
+                            <i class="fa-regular fa-envelope"></i>
+                            <div>
+                                <h4>Email Support</h4>
+                                <span>support@tasteforge.com</span>
+                            </div>
+                        </div>
+                        <div class="contact-method">
+                            <i class="fa-solid fa-phone-volume"></i>
+                            <div>
+                                <h4>Call Us</h4>
+                                <span>+880 1873-118924</span>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="../contact_page/index.html" class="btn primary-btn full-width">Go to Contact Form</a>
+                </div>
+            </div>
+        </div>
+
+        <div id="privacy-section" class="tab-content">
+            <div class="privacy-document glass-panel">
+                
+                <div class="privacy-title-area">
+                    <h2><i class="fa-solid fa-file-shield"></i> Privacy Policy</h2>
+                    <span class="update-badge">Effective Date: June 2026</span>
+                </div>
+                
+                <p class="privacy-intro">At TasteForge, your privacy is our priority. This policy outlines how we handle your personal data when you use our services, ensuring full compliance with global data protection standards.</p>
+
+                <div class="policy-box">
+                    <h3><i class="fa-solid fa-database"></i> 1. Information We Collect</h3>
+                    <p>We collect essential data to provide a seamless ordering experience:</p>
+                    <ul>
+                        <li><strong>Account Details:</strong> Name, email, phone number, and delivery address.</li>
+                        <li><strong>Payment Data:</strong> Securely tokenized payment info (processed via Stripe/SSLCommerz).</li>
+                        <li><strong>Device Info:</strong> IP address, browser type, and interaction metrics.</li>
+                    </ul>
+                </div>
+
+                <div class="policy-box">
+                    <h3><i class="fa-solid fa-lock"></i> 2. How We Protect Your Data</h3>
+                    <p>We implement military-grade <strong>AES-256 encryption</strong> to protect your personal and financial information. We strictly do not sell, rent, or trade your data to third-party marketing agencies.</p>
+                </div>
+
+                <div class="policy-box">
+                    <h3><i class="fa-solid fa-cookie-bite"></i> 3. Cookies & Tracking</h3>
+                    <p>Cookies help us remember your cart items and preferred meals. You have full control and can disable non-essential cookies via your browser settings anytime.</p>
+                </div>
+
+                <div class="policy-box">
+                    <h3><i class="fa-solid fa-scale-balanced"></i> 4. User Rights (GDPR)</h3>
+                    <p>You have the right to access, modify, or completely delete your data from our servers. To request data deletion, please contact our Data Protection Officer.</p>
+                </div>
+
+                <div class="privacy-footer">
+                    <p>Have questions regarding our privacy practices?</p>
+                    <a href="mailto:privacy@tasteforge.com" class="privacy-contact-btn"><i class="fa-solid fa-envelope"></i> Contact DPO</a>
+                </div>
+
+            </div>
+        </div>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

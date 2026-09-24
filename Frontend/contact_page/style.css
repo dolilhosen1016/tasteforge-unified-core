@@ -1,0 +1,135 @@
+/* --- Base Styles & Variables --- */
+:root {
+    --brand-color: #D4F751; /* Lime color */
+    --text-light: #ffffff;
+    --text-muted: #a0a0a0;
+    --font-main: 'Urbanist', 'Segoe UI', sans-serif;
+    --glass-bg: rgba(20, 20, 20, 0.6);
+    --glass-border: rgba(255, 255, 255, 0.08);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body, html {
+    width: 100%; min-height: 100vh;
+    font-family: var(--font-main);
+    background-color: #050505; 
+    background-image: linear-gradient(rgba(10, 10, 10, 0.8), rgba(10, 10, 10, 0.85)), url("Contact_Us_Background.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: var(--text-light);
+    overflow-x: hidden;
+}
+
+/* --- Navbar --- */
+.navbar {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 20px 5%; width: 100%; position: fixed; top: 0; left: 0; z-index: 1000;
+    background: rgba(5, 5, 5, 0.4); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+.logo a { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.logo-icon { height: 35px; width: auto; vertical-align: middle; }
+.logo-text { color: var(--text-light); font-size: 1.5rem; font-weight: 700; }
+
+.nav-links { display: flex; gap: 35px; margin-left: auto; margin-right: 60px; }
+.nav-links a { color: var(--text-light); text-decoration: none; font-size: 1rem; font-weight: 600; position: relative; padding-bottom: 5px; transition: color 0.3s ease; }
+.nav-links a:hover { color: var(--brand-color); }
+.nav-links a.active::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 2px; background-color: var(--brand-color); }
+
+.nav-actions-right { display: flex; align-items: center; }
+.menu-icon { cursor: pointer; transition: transform 0.2s ease; display: flex; align-items: center; z-index: 999; }
+.menu-icon:hover { transform: scale(1.1); stroke: var(--brand-color); }
+.menu-icon svg { pointer-events: none; }
+
+.dropdown-menu {
+    position: absolute; top: 80px; right: 5%;
+    background: rgba(17, 17, 17, 0.95); backdrop-filter: blur(15px);
+    border: 1px solid var(--glass-border); border-radius: 12px;
+    padding: 12px 0; min-width: 180px; display: none; flex-direction: column;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5); z-index: 1000;
+}
+.dropdown-menu.active { display: flex !important; }
+.dropdown-item { color: var(--text-light); text-decoration: none; padding: 12px 20px; transition: all 0.3s ease; font-size: 0.95rem; font-weight: 500; }
+.dropdown-item:hover { background-color: rgba(212, 247, 81, 0.1); color: var(--brand-color); padding-left: 24px; }
+
+/* --- Global Glass Panel --- */
+.glass-panel {
+    background: var(--glass-bg); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border); border-radius: 16px;
+}
+
+/* --- Contact Us Layout --- */
+.contact-container { max-width: 1100px; margin: 150px auto 50px; padding: 0 2rem; display: flex; flex-direction: column; gap: 50px; }
+.contact-wrapper { display: flex; justify-content: space-between; gap: 60px; align-items: flex-start; }
+
+/* Left Form Section */
+.contact-form-section { flex: 1; display: flex; flex-direction: column; gap: 20px; }
+.contact-form-section h1 { font-size: 2.8rem; font-weight: 800; letter-spacing: -0.5px; }
+.contact-form-section .subtitle { color: var(--text-muted); font-size: 1.1rem; margin-bottom: 20px; }
+
+.form-wrapper { display: flex; flex-direction: column; gap: 20px; }
+.input-group input, .input-group textarea {
+    width: 100%; background: rgba(15, 15, 15, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 10px;
+    padding: 18px 20px; color: var(--text-light); font-size: 1rem;
+    font-family: inherit; outline: none; transition: all 0.3s ease;
+}
+.input-group input:focus, .input-group textarea:focus {
+    border-color: var(--brand-color); box-shadow: 0 0 10px rgba(212, 247, 81, 0.15);
+}
+
+.submit-btn {
+    width: 100%; padding: 18px; border-radius: 10px; border: none;
+    background-color: var(--brand-color); color: #000; font-size: 1.1rem;
+    font-weight: 700; font-family: inherit; cursor: pointer;
+    transition: all 0.3s ease; margin-top: 10px;
+}
+.submit-btn:hover { background-color: #bce13d; transform: translateY(-3px); box-shadow: 0 8px 20px rgba(212, 247, 81, 0.25); }
+.submit-btn.success { background-color: #4CAF50; color: #fff; transform: none; box-shadow: none; pointer-events: none; }
+
+/* Right Info Section */
+.contact-info-section { flex: 1; max-width: 450px; width: 100%; }
+.info-card { padding: 40px; display: flex; flex-direction: column; gap: 35px; background: rgba(20, 20, 20, 0.8); }
+.info-card h2 { font-size: 1.6rem; font-weight: 700; margin-bottom: 10px; }
+
+.info-list { display: flex; flex-direction: column; gap: 30px; }
+.info-item { display: flex; align-items: center; gap: 20px; }
+.info-icon { font-size: 1.3rem; color: var(--brand-color); width: 25px; text-align: center; }
+.info-text { display: flex; flex-direction: column; gap: 5px; }
+.info-text .label { font-size: 0.9rem; font-weight: 600; color: var(--text-light); }
+.info-text .detail { font-size: 0.95rem; color: var(--text-muted); }
+
+/* Social Links */
+.social-section h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 20px; color: var(--text-light); }
+.social-links { display: flex; gap: 15px; }
+.social-links a {
+    width: 45px; height: 45px; border-radius: 50%;
+    background: rgba(255, 255, 255, 0.05); color: var(--text-muted);
+    display: flex; align-items: center; justify-content: center;
+    text-decoration: none; font-size: 1.1rem; transition: all 0.3s ease; border: 1px solid transparent;
+}
+.social-links a:hover {
+    background: rgba(212, 247, 81, 0.1); color: var(--brand-color); border-color: var(--brand-color); transform: translateY(-3px);
+}
+
+/* ✅ NEW: Dark Mode Map Section */
+.map-section {
+    width: 100%;
+    padding: 10px;
+    border-radius: 16px;
+    overflow: hidden;
+}
+.map-section iframe {
+    border-radius: 12px;
+    /* এই ফিল্টারটি নরমাল ম্যাপকে ডার্ক মোডে কনভার্ট করে দেয়! */
+    filter: invert(90%) hue-rotate(180deg) brightness(85%) contrast(120%);
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+    .contact-wrapper { flex-direction: column; }
+    .contact-info-section { max-width: 100%; }
+}

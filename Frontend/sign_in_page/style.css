@@ -1,0 +1,235 @@
+/* Base Styles & Variables */
+:root {
+    --bg-dark: #111111;
+    --modal-bg: #181818;
+    --input-bg: #222222;
+    --border-color: #333333;
+    --accent: #cbf122; /* Neon Lime Green */
+    --accent-hover: #bde020;
+    --text-main: #ffffff;
+    --text-muted: #999999;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--bg-dark);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('Singin_BG.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    background-attachment: fixed;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    color: var(--text-main);
+}
+
+/* Modal Container */
+.auth-modal {
+    background-color: var(--modal-bg);
+    width: 100%;
+    max-width: 420px;
+    border-radius: 16px;
+    padding: 32px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Header */
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    position: relative;
+}
+
+.back-btn-top {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s;
+    position: absolute;
+    left: 0;
+}
+
+.back-btn-top svg { width: 20px; height: 20px; }
+.back-btn-top:hover { color: var(--text-main); }
+
+.logo-container, .logo-container-center {
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    flex-grow: 1;
+    gap: 10px;
+}
+
+.brand-name {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text-main);
+    letter-spacing: 0.5px;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s;
+}
+
+.close-btn svg { width: 20px; height: 20px; }
+.close-btn:hover { color: var(--text-main); }
+
+/* Tabs */
+.tab-container {
+    display: flex;
+    background-color: var(--input-bg);
+    border-radius: 8px;
+    padding: 4px;
+    margin-bottom: 24px;
+}
+
+.tab-btn {
+    flex: 1;
+    background: none;
+    border: 1px solid transparent;
+    color: var(--text-muted);
+    padding: 10px 0;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s;
+}
+
+.tab-btn.active {
+    background-color: transparent;
+    border-color: var(--accent);
+    color: var(--accent);
+    box-shadow: 0 0 10px rgba(203, 241, 34, 0.1) inset;
+}
+
+/* Welcome Text */
+.welcome-text {
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.welcome-text h2 { font-size: 22px; font-weight: 600; margin-bottom: 6px; }
+.welcome-text p { color: var(--text-muted); font-size: 14px; }
+
+/* Inputs */
+.input-group { margin-bottom: 16px; position: relative; }
+
+input[type="email"], input[type="password"], .password-group input[type="text"] {
+    width: 100%;
+    background-color: var(--input-bg);
+    border: 1px solid var(--border-color);
+    color: var(--text-main);
+    padding: 14px 16px;
+    border-radius: 8px;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+input[type="email"]:focus, input[type="password"]:focus, .password-group input[type="text"]:focus {
+    border-color: var(--accent);
+}
+
+/* Password Toggle */
+.toggle-password {
+    position: absolute; right: 14px; top: 50%; transform: translateY(-50%);
+    background: none; border: none; color: var(--text-muted); cursor: pointer; display: flex;
+}
+.toggle-password svg { width: 18px; height: 18px; }
+.toggle-password:hover { color: var(--text-main); }
+
+/* Form Options */
+.form-options {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 24px; font-size: 13px;
+}
+
+.remember-me { display: flex; align-items: center; color: var(--text-muted); cursor: pointer; }
+.remember-me input { margin-right: 8px; accent-color: var(--accent); width: 16px; height: 16px; cursor: pointer; }
+
+.forgot-link { color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+.forgot-link:hover { color: var(--text-main); }
+
+/* Buttons */
+.btn-primary {
+    width: 100%; background-color: var(--accent); color: #000; border: none;
+    padding: 14px; border-radius: 8px; font-size: 15px; font-weight: 600; cursor: pointer; transition: background-color 0.2s;
+}
+.btn-primary:hover { background-color: var(--accent-hover); }
+
+/* Missing Element Styles Added Below */
+.divider {
+    display: flex; align-items: center; text-align: center; margin: 20px 0; color: var(--text-muted); font-size: 13px;
+}
+.divider::before, .divider::after {
+    content: ''; flex: 1; border-bottom: 1px solid var(--border-color);
+}
+.divider span { padding: 0 10px; }
+
+.btn-secondary {
+    width: 100%; background-color: transparent; color: var(--text-main); border: 1px solid var(--border-color);
+    padding: 12px; border-radius: 8px; font-size: 14px; font-weight: 500; cursor: pointer;
+    display: flex; align-items: center; justify-content: center; gap: 8px; transition: background-color 0.2s;
+}
+.btn-secondary:hover { background-color: var(--input-bg); }
+.btn-secondary svg { width: 18px; height: 18px; }
+
+/* Footer Links */
+.modal-footer { text-align: center; margin-top: 24px; font-size: 14px; color: var(--text-muted); }
+
+.signup-link { color: var(--accent); text-decoration: none; font-weight: 500; }
+.signup-link:hover { text-decoration: underline; }
+
+.back-link { color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+.back-link:hover { color: var(--text-main); }
+/* 🔥 Social Login Buttons Styles 🔥 */
+.social-login-container {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.social-btn {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    background-color: transparent;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.social-btn:hover {
+    background-color: var(--input-bg);
+}
+
+.social-btn img, .social-btn svg {
+    width: 22px;
+    height: 22px;
+}

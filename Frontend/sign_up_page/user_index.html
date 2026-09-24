@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TasteForge - User Sign Up</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="user-theme">
+
+<div class="auth-modal">
+    <div class="modal-header">
+        <button class="back-btn-top" onclick="window.location.href='../index.html'" title="Go Back">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+        </button>
+        <div class="logo-container-center">
+            <img src="../TasteForge_Logo.png" alt="TasteForge Logo" class="logo-icon">
+            <span class="brand-name">TasteForge</span>
+        </div>
+    </div>
+
+    <div class="welcome-text">
+        <h2>Create Your Account</h2>
+        <p>Join TasteForge and start building your perfect meals.</p>
+    </div>
+
+    <form id="userSignupForm" onsubmit="handleSignup(event)">
+        <div class="input-group">
+            <input type="text" placeholder="Full Name" required>
+        </div>
+        <div class="input-group">
+            <input type="email" placeholder="Email Address" required>
+        </div>
+        <div class="input-group">
+            <input type="tel" placeholder="Phone Number" required>
+        </div>
+        <div class="input-group">
+            <input type="password" placeholder="Password" required>
+        </div>
+        <div class="input-group">
+            <input type="password" placeholder="Confirm Password" required>
+        </div>
+
+        <div class="form-options">
+            <label class="remember-me">
+                <input type="checkbox" required>
+                <span class="checkmark"></span>
+                I agree to the&nbsp;<a href="#" class="signup-link">Terms & Conditions</a>
+            </label>
+        </div>
+
+        <button type="submit" class="btn-primary">Create Account</button>
+    </form>
+
+    <div class="modal-footer" style="margin-top: 16px;">
+        <p>Already have an account? <a href="../sign_in_page/sign_in_index.html?tab=user" class="signup-link">Sign In</a></p>
+    </div>
+
+    <div class="divider">
+        <span>or</span>
+    </div>
+
+    <button class="btn-secondary" onclick="window.location.href='../menu_page/index.html'">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+        Continue as Guest
+    </button>
+
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
