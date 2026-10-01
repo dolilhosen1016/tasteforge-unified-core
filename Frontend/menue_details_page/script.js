@@ -25,7 +25,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     async function loadMealDetails() {
         try {
-            const response = await fetch('data.json');
+            // 🔥 UPDATED: API Link বসানো হলো
+            const response = await fetch('http://localhost:5000/api/menuitems/get-all');
             if (!response.ok) throw new Error('Data fetch failed');
             
             const data = await response.json();
@@ -50,7 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         } catch (error) {
             console.error(error);
-            if(workspaceRoot) workspaceRoot.innerHTML = `<h2 style="color:red; text-align:center; width:100%;">Error loading menu data.</h2>`;
+            if(workspaceRoot) workspaceRoot.innerHTML = `<h2 style="color:red; text-align:center; width:100%;">Error loading menu data from server.</h2>`;
         }
     }
 
@@ -60,8 +61,8 @@ document.addEventListener('DOMContentLoaded', () => {
     function renderWorkspace() {
         if(!workspaceRoot) return;
         
-        // 🔥 FIXED: নতুন স্টোরেজ কি (tasteForgeUserName) চেক করা হচ্ছে
-        const isRegistered = localStorage.getItem('tasteForgeUserName') !== null;
+        // 🔥 UPDATED: Using 'tasteforge_token'
+        const isRegistered = localStorage.getItem('tasteforge_token') !== null;
         let ingredientsHTML = '';
         
         if (currentMeal.ingredients.length > 0) {
@@ -210,8 +211,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // 6. SAVE BUILD LOGIC
     // =========================================
     window.saveBuildToDashboard = function() {
-        // 🔥 FIXED: নতুন স্টোরেজ কি (tasteForgeUserName) চেক করা হচ্ছে
-        const isRegistered = localStorage.getItem('tasteForgeUserName') !== null;
+        // 🔥 UPDATED: Using 'tasteforge_token'
+        const isRegistered = localStorage.getItem('tasteforge_token') !== null;
         
         if (!isRegistered) {
             alert("🔒 Please Sign In or Create an Account to save your custom masterpiece!");
@@ -323,8 +324,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
             
-            // 🔥 FIXED: নতুন স্টোরেজ কি (tasteForgeUserName) চেক করা হচ্ছে
-            const isLoggedIn = localStorage.getItem('tasteForgeUserName') !== null;
+            // 🔥 UPDATED: Using 'tasteforge_token'
+            const isLoggedIn = localStorage.getItem('tasteforge_token') !== null;
             
             if (!isLoggedIn) {
                 alert("Please Sign In to proceed to payment!");

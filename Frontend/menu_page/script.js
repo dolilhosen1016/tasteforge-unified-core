@@ -4,19 +4,20 @@ const filterBtns = document.querySelectorAll('.filter-btn');
 let allMeals = [];
 let cart = JSON.parse(localStorage.getItem('tasteForgeCartItems')) || [];
 
-// Load data from JSON file
+// Load data from Real Database (MongoDB)
 async function loadData() {
     try {
-        const response = await fetch('data.json');
+        // 🔥 UPDATED: API Link বসানো হলো
+        const response = await fetch('http://localhost:5000/api/menuitems/get-all'); 
         if (!response.ok) {
             throw new Error('Network response was not ok');
         }
         allMeals = await response.json();
         renderCards(allMeals);
     } catch (error) {
-        console.error("Error loading JSON data:", error);
+        console.error("Error loading API data:", error);
         if (grid) {
-            grid.innerHTML = '<p style="color: #ff4757; text-align: center; width: 100%; font-weight: bold;">Error loading data. Make sure you are using a local server (like Live Server).</p>';
+            grid.innerHTML = '<p style="color: #ff4757; text-align: center; width: 100%; font-weight: bold;">Error loading data from server. Is backend running?</p>';
         }
     }
 }
@@ -153,8 +154,8 @@ const closeMealModal = document.getElementById('closeMealModal');
 const mealModalBody = document.getElementById('mealModalBody');
 
 window.openMealModal = function(id) {
-    // 🔥 FIXED: নতুন স্টোরেজ কি (tasteForgeUserName) চেক করা হচ্ছে
-    const isLoggedIn = localStorage.getItem('tasteForgeUserName') !== null;
+    // 🔥 UPDATED: Using 'tasteforge_token'
+    const isLoggedIn = localStorage.getItem('tasteforge_token') !== null;
     
     if (isLoggedIn) {
         window.location.href = `../menue_details_page/index.html?id=${id}`;
@@ -190,12 +191,33 @@ window.addEventListener('click', (e) => {
     }
 });
 
+// =========================================
+// ✅ BULLETPROOF LOGOUT FUNCTIONALITY
+// =========================================
+window.logoutUser = function() {
+    // ১. নতুন টোকেন রিমুভ
+    localStorage.removeItem('tasteforge_token');
+    localStorage.removeItem('tasteforge_user');
+    
+    // ২. পুরনো মডেলের সব ভৌতিক ডেটা রিমুভ
+    localStorage.removeItem('tasteForgeUserName');
+    localStorage.removeItem('tasteForgeUserEmail');
+    localStorage.removeItem('tasteForgeUserPassword');
+    localStorage.removeItem('tasteForgeOwnerName');
+    localStorage.removeItem('tasteForgeOwnerEmail');
+    localStorage.removeItem('tasteForgeChefName');
+    localStorage.removeItem('tasteForgeChefEmail');
+
+    alert("Logged out successfully! 🔒");
+    window.location.href = '../sign_in_page/sign_in_index.html'; 
+};
+
 // Initialize JSON Data
 document.addEventListener('DOMContentLoaded', () => {
     loadData();
 
     // =========================================
-    // ✅ FOOLPROOF DYNAMIC BACK BUTTON (FIXED LOGIC)
+    // ✅ FOOLPROOF DYNAMIC BACK BUTTON
     // =========================================
     const backBtn = document.getElementById('dynamicBackBtn');
     
@@ -203,7 +225,8 @@ document.addEventListener('DOMContentLoaded', () => {
         backBtn.onclick = function(e) {
             e.preventDefault(); 
             
-            const isLoggedIn = localStorage.getItem('tasteForgeUserName');
+            // 🔥 UPDATED: Using 'tasteforge_token'
+            const isLoggedIn = localStorage.getItem('tasteforge_token');
 
             if (isLoggedIn) {
                 window.location.href = '../dashboard_page/index.html';
@@ -225,7 +248,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
             
-            const isLoggedIn = localStorage.getItem('tasteForgeUserName') !== null;
+            // 🔥 UPDATED: Using 'tasteforge_token'
+            const isLoggedIn = localStorage.getItem('tasteforge_token') !== null;
             
             if (!isLoggedIn) {
                 alert("Please Sign In to proceed to checkout!");

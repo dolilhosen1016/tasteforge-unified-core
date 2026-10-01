@@ -1,15 +1,26 @@
 const mongoose = require('mongoose');
 
-const menuItemSchema = new mongoose.Schema({
-    name: { type: String, required: true },
-    basePrice: { type: Number, required: true },
-    category: { type: String, required: true },
-    
+// Ingredients er structure
+const ingredientSchema = new mongoose.Schema({
+    name: { type: String },
+    defaultQty: { type: Number },
+    minQty: { type: Number },
+    maxQty: { type: Number },
+    extraPrice: { type: Number },
+    extraCalories: { type: Number }
+});
 
-    calories: { type: Number }, // e.g., 250 
-    protein: { type: Number },  // e.g., 15 
-    
-    isAvailable: { type: Boolean, default: true }
+// Main Menu Item er structure 
+const menuItemSchema = new mongoose.Schema({
+    id: { type: Number, required: true, unique: true }, 
+    name: { type: String, required: true },
+    description: { type: String, required: true },
+    longDescription: { type: String },
+    calories: { type: Number, required: true },
+    price: { type: Number, required: true }, // basePrice er bodole price
+    category: { type: String, required: true },
+    imageUrl: { type: String, required: true },
+    ingredients: [ingredientSchema] // Ingredients array
 }, { timestamps: true });
 
 module.exports = mongoose.model('MenuItem', menuItemSchema);
