@@ -114,4 +114,19 @@ router.post('/google', async (req, res) => {
     }
 });
 
+router.post('/create-staff', async (req, res) => {
+    try {
+        const { name, email, password, role } = req.body;
+        // যদি ইমেইল আগে থেকেই থাকে তা চেক করার লজিক
+        const existingUser = await User.findOne({ email });
+        if (existingUser) return res.status(400).json({ error: "Email already exists!" });
+
+        const newStaff = new User({ name, email, password, role });
+        await newStaff.save();
+        res.status(201).json({ message: `${role} account created successfully!` });
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
 module.exports = router;

@@ -33,3 +33,6 @@ app.listen(PORT, () => {
 
 const menuItemRoutes = require('./routes/menuitem');
 app.use('/api/menuitems', menuItemRoutes); // রাউটের নাম দিলাম /api/menuitems
+
+const orderRoutes = require('./routes/order');
+app.use('/api/orders', orderRoutes);

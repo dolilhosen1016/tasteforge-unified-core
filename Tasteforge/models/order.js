@@ -8,7 +8,8 @@ const orderItemSchema = new mongoose.Schema({
 });
 
 const orderSchema = new mongoose.Schema({
-    user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }, // Optional for offline kiosk users
+    user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }, // Optional
+    userEmail: { type: String }, 
     tableNoOrTokenId: { type: String, required: true },
     orderType: { type: String, enum: ['Kiosk', 'Waiter', 'Online'], required: true },
     status: { 

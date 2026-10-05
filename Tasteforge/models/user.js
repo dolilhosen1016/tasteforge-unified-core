@@ -3,18 +3,18 @@ const mongoose = require('mongoose');
 const userSchema = new mongoose.Schema({
     name: { type: String, required: true },
     email: { type: String, required: true, unique: true },
-    passwordHash: { type: String }, // এটা এখন অপশনাল (কারণ গুগল লগিনে পাসওয়ার্ড লাগবে না)
+    passwordHash: { type: String }, // গুগল লগিনের জন্য অপশনাল
     role: { 
         type: String, 
-        enum: ['Admin', 'Chef', 'Cashier', 'Waiter', 'Customer'], 
-        default: 'Customer' 
+        enum: ['user', 'admin', 'chef', 'waiter', 'cashier'], 
+        default: 'user' 
     },
     authProvider: { 
         type: String, 
         enum: ['local', 'google', 'facebook'], 
         default: 'local' 
     },
-    socialId: { type: String } // গুগল বা ফেসবুকের ইউনিক আইডি সেভ করার জন্য
+    socialId: { type: String } // গুগল/ফেসবুকের আইডি
 }, { timestamps: true });
 
 module.exports = mongoose.model('User', userSchema);
