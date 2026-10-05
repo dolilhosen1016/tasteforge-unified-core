@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     // =========================================
-    // 3. CONFIRM ORDER LOGIC (🔥 FIXED: SAVING USER DATA)
+    // 3. REAL BACKEND ORDER LOGIC (🔥 MONGODB INTEGRATION)
     // =========================================
     const confirmPaymentBtn = document.getElementById('confirmPaymentBtn');
     const paymentSection = document.getElementById('paymentSection');
@@ -40,49 +40,69 @@ document.addEventListener('DOMContentLoaded', () => {
     const displayQueue = document.getElementById('displayQueue');
 
     if (confirmPaymentBtn) {
-        confirmPaymentBtn.addEventListener('click', () => {
+        confirmPaymentBtn.addEventListener('click', async () => {
             if (localCart.length === 0) {
                 alert("Your cart is empty! Please add items before checkout.");
                 window.location.href = '../menu_page/index.html';
                 return;
             }
 
-            confirmPaymentBtn.innerText = "Processing...";
-            
-            setTimeout(() => {
-                const newOrderId = '#TFP' + Math.floor(1000 + Math.random() * 9000);
-                const queueNumber = Math.floor(1 + Math.random() * 50);
+            // নতুন অথেনটিকেশন থেকে ইউজারের ইমেইল নেওয়া
+            const userDataString = localStorage.getItem('tasteforge_user');
+            if (!userDataString) {
+                alert("Authentication error! Please log in again.");
+                window.location.href = '../sign_in_page/sign_in_index.html';
+                return;
+            }
 
-                // 🔥 FIXED: বর্তমান লগ-ইন করা ইউজারের ডেটা টেনে আনা হলো
-                const activeUserName = localStorage.getItem('tasteForgeUserName') || 'Guest Customer';
-                const activeUserEmail = localStorage.getItem('tasteForgeUserEmail') || 'guest@tasteforge.com';
+            const userData = JSON.parse(userDataString);
+            const userEmail = userData.email;
 
-                let orderHistory = JSON.parse(localStorage.getItem('tasteForgeOrders')) || [];
-                
-                localCart.forEach(item => {
-                    orderHistory.push({
-                        id: newOrderId,
-                        date: new Date().toLocaleDateString(),
-                        amount: item.price,
-                        name: item.name,
-                        status: 'Pending',
-                        // 🔥 FIXED: অর্ডারের সাথে ইউজারের নাম ও ইমেইল পারমানেন্টলি সেভ করে দেওয়া হলো
-                        customerName: activeUserName,
-                        customerEmail: activeUserEmail
-                    });
+            confirmPaymentBtn.innerText = "Processing via Server...";
+            confirmPaymentBtn.disabled = true;
+
+            const tableOrToken = `TOKEN-${Math.floor(1000 + Math.random() * 9000)}`;
+
+            try {
+                // 🔥 BACKEND-এ ডাটাবেসে রিকোয়েস্ট পাঠানো হচ্ছে
+                const response = await fetch('http://localhost:5000/api/orders/place', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        userEmail: userEmail,
+                        cartItems: localCart, // কার্টের ডেটা
+                        totalAmount: totalAmount,
+                        orderType: 'Online', 
+                        tableNoOrTokenId: tableOrToken
+                    })
                 });
-                
-                localStorage.setItem('tasteForgeOrders', JSON.stringify(orderHistory));
 
-                if(displayOrderId) displayOrderId.innerText = newOrderId;
-                if(displayQueue) displayQueue.innerText = queueNumber;
+                const data = await response.json();
 
-                localStorage.removeItem('tasteForgeCartItems');
-                
-                if(paymentSection) paymentSection.style.display = 'none';
-                if(confirmationSection) confirmationSection.style.display = 'block';
+                if (response.ok) {
+                    // অর্ডার সাকসেসফুল
+                    if (displayOrderId) displayOrderId.innerText = tableOrToken;
+                    if (displayQueue) displayQueue.innerText = Math.floor(1 + Math.random() * 50);
 
-            }, 1200); 
+                    // কার্ট ক্লিয়ার করে দেওয়া
+                    localStorage.removeItem('tasteForgeCartItems');
+                    
+                    if (paymentSection) paymentSection.style.display = 'none';
+                    if (confirmationSection) confirmationSection.style.display = 'block';
+                } else {
+                    alert("Order Failed: " + data.error);
+                    confirmPaymentBtn.innerText = "Confirm Order";
+                    confirmPaymentBtn.disabled = false;
+                }
+
+            } catch (error) {
+                console.error("Payment API Error:", error);
+                alert("❌ Server Error! Backend is not responding.");
+                confirmPaymentBtn.innerText = "Confirm Order";
+                confirmPaymentBtn.disabled = false;
+            }
         });
     }
 

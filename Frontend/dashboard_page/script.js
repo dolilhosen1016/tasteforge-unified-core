@@ -1,7 +1,19 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    const storedName = localStorage.getItem('tasteForgeUserName') || 'Guest User'; 
-    const storedEmail = localStorage.getItem('tasteForgeUserEmail') || 'guest@tasteforge.com';
+    // =========================================
+    // 1. REAL AUTHENTICATION DATA LOAD
+    // =========================================
+    const userDataString = localStorage.getItem('tasteforge_user');
+    
+    // ইউজার লগিন করা না থাকলে সাইন-ইন পেজে পাঠিয়ে দেবে
+    if (!userDataString) {
+        window.location.href = '../sign_in_page/sign_in_index.html';
+        return;
+    }
+
+    const userData = JSON.parse(userDataString);
+    const storedName = userData.name || 'User'; 
+    const storedEmail = userData.email || 'guest@tasteforge.com';
 
     document.getElementById('userNameDisplay').textContent = storedName.split(' ')[0];
     document.getElementById('dropdownName').textContent = storedName;
@@ -21,7 +33,9 @@ document.addEventListener('DOMContentLoaded', () => {
     else if (currentHour < 18) timeGreeting = 'Good Afternoon';
     document.getElementById('greetingMsg').innerHTML = `${timeGreeting}, <span id="userNameDisplay" style="color: white;">${storedName.split(' ')[0]}</span> <span class="wave">👋</span>`;
 
+    // =========================================
     // 2. FETCH JSON DATA FOR SAVED BUILDS
+    // =========================================
     async function loadSavedBuildsDashboard() {
         const buildsContainer = document.getElementById('savedBuildsContainer');
         try {
@@ -60,7 +74,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     loadSavedBuildsDashboard();
 
-    // 3. DYNAMIC LOYALTY POINTS & ORDER TRACKING (🔥 LIVE SYNC UPDATED)
+    // =========================================
+    // 3. 🔥 REAL-TIME DATABASE ORDER FETCHING 
+    // =========================================
     const orderListContainer = document.getElementById('orderListContainer');
     const orderViewAllBtn = document.getElementById('orderViewAllBtn');
     const totalOrdersCount = document.getElementById('totalOrdersCount');
@@ -68,81 +84,88 @@ document.addEventListener('DOMContentLoaded', () => {
     const pointsProgressFill = document.getElementById('pointsProgressFill');
     const nextRewardText = document.getElementById('nextRewardText');
     
-    window.renderOrderHistory = function(showAll = false) {
+    window.renderOrderHistory = async function(showAll = false) {
         if (!orderListContainer) return;
         
-        let orderHistory = JSON.parse(localStorage.getItem('tasteForgeOrders')) || [];
-        let myOrders = orderHistory.filter(order => order.customerEmail === storedEmail);
-        
-        let totalItemsCrafted = myOrders?.length || 0; 
-        let pointsPerMeal = 20; 
-        let currentPoints = totalItemsCrafted * pointsPerMeal;
-        let rewardMilestoneTarget = 500; 
-
-        if (totalOrdersCount) totalOrdersCount.textContent = totalItemsCrafted;
-        if (loyaltyPointsDisplay) loyaltyPointsDisplay.textContent = currentPoints;
-
-        let progressPercentage = (currentPoints / rewardMilestoneTarget) * 100;
-        progressPercentage = Math.min(progressPercentage, 100);
-        if (pointsProgressFill) pointsProgressFill.style.width = `${progressPercentage}%`;
-        if (nextRewardText) nextRewardText.textContent = `Next Reward: ${rewardMilestoneTarget} pts`;
-
-        if (myOrders.length === 0) {
-            orderListContainer.innerHTML = `
-                <div class="empty-state">
-                    <i class="fa-solid fa-receipt"></i>
-                    <p>You haven't crafted any meals yet.</p>
-                    <a href="../menu_page/index.html" class="btn primary-btn" style="margin-top: 10px;">Craft Your First Meal</a>
-                </div>
-            `;
-            if (orderViewAllBtn) orderViewAllBtn.style.display = 'none';
-        } else {
-            let htmlContent = '';
-            let recentOrders = myOrders.slice().reverse(); 
-
-            if (!showAll) {
-                recentOrders = recentOrders.slice(0, 3);
-                if (orderViewAllBtn) orderViewAllBtn.style.display = 'inline-block';
-            } else {
-                if (orderViewAllBtn) orderViewAllBtn.style.display = 'none';
-            }
+        try {
+            // MongoDB থেকে ইউজারের রিয়েল ডেটা আনা হচ্ছে
+            const response = await fetch(`http://localhost:5000/api/orders/my-orders/${storedEmail}`);
+            if (!response.ok) throw new Error("Failed to fetch orders");
             
-            recentOrders.forEach(order => {
-                // 🔥 Dynamic Status Badge Logic
-                let statusBadge = '';
-                const status = order.status || 'Pending';
+            const myOrders = await response.json();
+            
+            let totalItemsCrafted = myOrders.length; 
+            let pointsPerMeal = 20; 
+            let currentPoints = totalItemsCrafted * pointsPerMeal;
+            let rewardMilestoneTarget = 500; 
 
-                if (status === 'Pending') {
-                    statusBadge = `<span class="badge" style="background: rgba(255, 177, 66, 0.1); color: #ffb142; border: 1px solid rgba(255, 177, 66, 0.3);"><i class="fa-solid fa-fire"></i> Cooking</span>`;
-                } else if (status === 'Prepared') {
-                    statusBadge = `<span class="badge" style="background: rgba(0, 210, 255, 0.1); color: #00d2ff; border: 1px solid rgba(0, 210, 255, 0.3);"><i class="fa-solid fa-bell-concierge"></i> Ready to Serve</span>`;
-                } else {
-                    statusBadge = `<span class="badge delivered" style="background: rgba(212, 247, 81, 0.1); color: var(--brand-color); border: 1px solid rgba(212, 247, 81, 0.3);"><i class="fa-solid fa-check"></i> Completed</span>`;
-                }
+            if (totalOrdersCount) totalOrdersCount.textContent = totalItemsCrafted;
+            if (loyaltyPointsDisplay) loyaltyPointsDisplay.textContent = currentPoints;
 
-                htmlContent += `
-                    <div class="order-row dash-card">
-                        <div class="order-id">${order.id || '#TFP' + Math.floor(1000 + Math.random() * 9000)}</div>
-                        <div class="order-date">${order.date || 'Today'}</div>
-                        <div class="order-amount">$${parseFloat(order.amount).toFixed(2)}</div>
-                        <div class="order-status">${statusBadge}</div>
+            let progressPercentage = (currentPoints / rewardMilestoneTarget) * 100;
+            progressPercentage = Math.min(progressPercentage, 100);
+            if (pointsProgressFill) pointsProgressFill.style.width = `${progressPercentage}%`;
+            if (nextRewardText) nextRewardText.textContent = `Next Reward: ${rewardMilestoneTarget} pts`;
+
+            if (myOrders.length === 0) {
+                orderListContainer.innerHTML = `
+                    <div class="empty-state">
+                        <i class="fa-solid fa-receipt"></i>
+                        <p>You haven't crafted any meals yet.</p>
+                        <a href="../menu_page/index.html" class="btn primary-btn" style="margin-top: 10px;">Craft Your First Meal</a>
                     </div>
                 `;
-            });
-            orderListContainer.innerHTML = htmlContent;
+                if (orderViewAllBtn) orderViewAllBtn.style.display = 'none';
+            } else {
+                let htmlContent = '';
+                // ডেটাবেস থেকে এমনিতেই নতুন ডেটা আগে আসবে
+                let recentOrders = myOrders; 
+
+                if (!showAll) {
+                    recentOrders = recentOrders.slice(0, 3);
+                    if (orderViewAllBtn) orderViewAllBtn.style.display = 'inline-block';
+                } else {
+                    if (orderViewAllBtn) orderViewAllBtn.style.display = 'none';
+                }
+                
+                recentOrders.forEach(order => {
+                    let statusBadge = '';
+                    const status = order.status || 'Pending';
+
+                    if (status === 'Pending') {
+                        statusBadge = `<span class="badge" style="background: rgba(255, 177, 66, 0.1); color: #ffb142; border: 1px solid rgba(255, 177, 66, 0.3);"><i class="fa-solid fa-fire"></i> Cooking</span>`;
+                    } else if (status === 'Preparing' || status === 'Cooked') {
+                        statusBadge = `<span class="badge" style="background: rgba(0, 210, 255, 0.1); color: #00d2ff; border: 1px solid rgba(0, 210, 255, 0.3);"><i class="fa-solid fa-bell-concierge"></i> Ready to Serve</span>`;
+                    } else {
+                        statusBadge = `<span class="badge delivered" style="background: rgba(212, 247, 81, 0.1); color: var(--brand-color); border: 1px solid rgba(212, 247, 81, 0.3);"><i class="fa-solid fa-check"></i> Completed</span>`;
+                    }
+
+                    // রিয়েল ডেটাবেস আইডি এবং ডেট
+                    const displayId = order.tableNoOrTokenId || '#' + order._id.substring(0, 6).toUpperCase();
+                    const orderDate = new Date(order.createdAt).toLocaleDateString();
+
+                    htmlContent += `
+                        <div class="order-row dash-card">
+                            <div class="order-id">${displayId}</div>
+                            <div class="order-date">${orderDate}</div>
+                            <div class="order-amount">$${parseFloat(order.totalAmount).toFixed(2)}</div>
+                            <div class="order-status">${statusBadge}</div>
+                        </div>
+                    `;
+                });
+                orderListContainer.innerHTML = htmlContent;
+            }
+        } catch (error) {
+            console.error("Order fetch error:", error);
+            orderListContainer.innerHTML = `<p style="color:red; text-align:center;">Failed to load live orders from server.</p>`;
         }
     };
+    
     renderOrderHistory(false);
 
-    // 🔥 MAGIC REAL-TIME SYNC: Listens for changes in localStorage from other tabs!
-    window.addEventListener('storage', (e) => {
-        if (e.key === 'tasteForgeOrders') {
-            const isOrdersTabActive = document.querySelector('.sidebar-nav .nav-item:nth-child(3)').classList.contains('active');
-            renderOrderHistory(isOrdersTabActive);
-        }
-    });
-
-    // 4. ACTION DROPDOWNS
+    // =========================================
+    // 4. ACTION DROPDOWNS & MODALS
+    // =========================================
     const profileBtn = document.getElementById('profileBtn');
     const profileDropdown = document.getElementById('profileDropdown');
     const notificationBtn = document.getElementById('notificationBtn');
@@ -169,7 +192,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if (notificationDropdown) notificationDropdown.classList.remove('active');
     });
 
-    // 5. SETTINGS POP-UP MODAL
     const sidebarSettingsBtn = document.getElementById('sidebarSettingsBtn');
     const profileSettingsBtn = document.getElementById('profileSettingsBtn');
     const settingsModal = document.getElementById('settingsModal');
@@ -197,7 +219,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // 6. REWARDS POP-UP MODAL
     const sidebarRewardsBtn = document.getElementById('sidebarRewardsBtn');
     const rewardsModal = document.getElementById('rewardsModal');
     const closeRewardsBtn = document.getElementById('closeRewardsBtn');
@@ -205,29 +226,36 @@ document.addEventListener('DOMContentLoaded', () => {
     const rewardClaimButtons = document.querySelectorAll('.btn-claim-reward');
 
     if (sidebarRewardsBtn && rewardsModal) {
-        sidebarRewardsBtn.addEventListener('click', (e) => {
+        sidebarRewardsBtn.addEventListener('click', async (e) => {
             e.preventDefault();
             e.stopPropagation();
             
-            let orderHistory = JSON.parse(localStorage.getItem('tasteForgeOrders')) || [];
-            let currentPoints = orderHistory.filter(o => o.customerEmail === storedEmail).length * 20;
-            if (modalRewardsPoints) modalRewardsPoints.textContent = `${currentPoints} PTS`;
+            // রিয়েল পয়েন্ট ক্যালকুলেশন
+            try {
+                const response = await fetch(`http://localhost:5000/api/orders/my-orders/${storedEmail}`);
+                const myOrders = await response.json();
+                let currentPoints = myOrders.length * 20;
+                
+                if (modalRewardsPoints) modalRewardsPoints.textContent = `${currentPoints} PTS`;
 
-            rewardClaimButtons.forEach(btn => {
-                const cost = parseInt(btn.getAttribute('data-cost'));
-                if (currentPoints >= cost) {
-                    btn.classList.remove('locked');
-                    btn.classList.add('unlocked');
-                    btn.textContent = 'Claim';
-                    btn.disabled = false;
-                } else {
-                    btn.classList.remove('unlocked');
-                    btn.classList.add('locked');
-                    btn.textContent = 'Locked';
-                    btn.disabled = true;
-                }
-            });
-            rewardsModal.classList.add('active');
+                rewardClaimButtons.forEach(btn => {
+                    const cost = parseInt(btn.getAttribute('data-cost'));
+                    if (currentPoints >= cost) {
+                        btn.classList.remove('locked');
+                        btn.classList.add('unlocked');
+                        btn.textContent = 'Claim';
+                        btn.disabled = false;
+                    } else {
+                        btn.classList.remove('unlocked');
+                        btn.classList.add('locked');
+                        btn.textContent = 'Locked';
+                        btn.disabled = true;
+                    }
+                });
+                rewardsModal.classList.add('active');
+            } catch (err) {
+                console.error(err);
+            }
         });
 
         if (closeRewardsBtn) closeRewardsBtn.addEventListener('click', () => rewardsModal.classList.remove('active'));
@@ -249,12 +277,13 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 7. LOAD SAVED BUILDS LOGIC
+    // =========================================
+    // 5. LOAD SAVED BUILDS LOGIC
+    // =========================================
     const userSavedBuildsContainer = document.getElementById('savedBuildsContainer');
 
     function loadUserSavedBuilds() {
         if (!userSavedBuildsContainer) return;
-
         let savedBuilds = JSON.parse(localStorage.getItem('tasteForgeSavedBuilds')) || [];
 
         if (savedBuilds.length === 0) {
@@ -300,7 +329,9 @@ document.addEventListener('DOMContentLoaded', () => {
     };
     loadUserSavedBuilds();
 
-    // 8. LEFT SIDEBAR TAB LOGIC
+    // =========================================
+    // 6. LEFT SIDEBAR TAB LOGIC
+    // =========================================
     const tabDashBtn = document.querySelector('.sidebar-nav .nav-item:first-child');
     const tabOrdersBtn = document.querySelector('.sidebar-nav .nav-item:nth-child(3)');
     const tabSavedBtn = document.getElementById('sidebarSavedBtn');
@@ -350,7 +381,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 9. SECURE LOGOUT LOGIC (SNIPER MODE)
+    // =========================================
+    // 7. 🔥 BULLETPROOF SECURE LOGOUT LOGIC
+    // =========================================
     const logoutButtons = document.querySelectorAll('.logout-btn, .logout');
 
     if (logoutButtons.length > 0) {
@@ -358,10 +391,13 @@ document.addEventListener('DOMContentLoaded', () => {
             btn.addEventListener('click', (e) => {
                 e.preventDefault();
                 if(confirm("Are you sure you want to sign out?")) {
+                    // নতুন টোকেন এবং পুরনো সব ডেটা মুছে ফেলা হলো
+                    localStorage.removeItem('tasteforge_token');
+                    localStorage.removeItem('tasteforge_user');
                     localStorage.removeItem('tasteForgeUserName');
                     localStorage.removeItem('tasteForgeUserEmail');
                     localStorage.removeItem('tasteForgeUserPassword');
-                    localStorage.removeItem('tasteForgeCartItems');
+                    
                     window.location.href = '../index.html'; 
                 }
             });

@@ -21,6 +21,7 @@
             <a href="#" class="nav-item" id="tabMenu"><i class="fa-solid fa-utensils"></i> Menu Items</a>
             <a href="#" class="nav-item" id="tabCustomers"><i class="fa-solid fa-users"></i> Customers</a>
             <a href="#" class="nav-item" id="tabSettings"><i class="fa-solid fa-gear"></i> Settings</a>
+            <a href="#" class="nav-item" id="tabStaff"><i class="fa-solid fa-user-plus"></i> Staff Management</a>
         </nav>
         <div class="logout-container">
             <a href="../index.html" class="nav-item logout-btn" id="adminLogout"><i class="fa-solid fa-arrow-right-from-bracket"></i> Logout</a>
@@ -160,6 +161,26 @@
                 </div>
             </div>
         </section>
+
+        <section class="recent-orders-section" id="staffSection" style="display: none;">
+    <div class="section-header">
+        <h3>Create Staff Account</h3>
+    </div>
+    <div class="table-container" style="padding: 30px; max-width: 500px;">
+        <form id="staffForm" style="display: flex; flex-direction: column; gap: 15px;">
+            <input type="text" id="staffName" placeholder="Full Name" required style="padding: 10px; border-radius: 5px; background: rgba(0,0,0,0.5); color: #fff; border: 1px solid var(--border-color);">
+            <input type="email" id="staffEmail" placeholder="Email Address" required style="padding: 10px; border-radius: 5px; background: rgba(0,0,0,0.5); color: #fff; border: 1px solid var(--border-color);">
+            <input type="password" id="staffPassword" placeholder="Password" required style="padding: 10px; border-radius: 5px; background: rgba(0,0,0,0.5); color: #fff; border: 1px solid var(--border-color);">
+            <select id="staffRole" style="padding: 10px; border-radius: 5px; background: rgba(0,0,0,0.5); color: #fff; border: 1px solid var(--border-color);">
+                <option value="waiter">Waiter (Table Orders)</option>
+                <option value="chef">Chef (Kitchen Display)</option>
+                <option value="cashier">Cashier (Billing)</option>
+                <option value="admin">Co-Admin</option>
+            </select>
+            <button type="submit" class="action-btn" style="width: 100%; justify-content: center; padding: 12px; font-size: 1rem;"><i class="fa-solid fa-plus"></i> Create Account</button>
+        </form>
+    </div>
+</section>
 
     </main>
 
