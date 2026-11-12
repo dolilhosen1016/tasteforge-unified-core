@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TasteForge - Waiter Dashboard</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="dashboard-bg waiter-bg">
+
+    <div class="sidebar">
+        <h2>TasteForge</h2>
+        <ul>
+            <li class="active">Take Order</li>
+            <li>Live Status</li>
+        </ul>
+        <button class="btn-secondary" id="logoutBtn" style="margin-top: auto;">Logout</button>
+    </div>
+
+    <div class="main-content">
+        <header>
+            <h1>Waiter Dashboard</h1>
+            <p>Welcome, <span id="waiterName">Loading...</span></p>
+        </header>
+
+        <div class="waiter-container">
+            <!-- Left: Menu Selection -->
+            <div class="menu-panel">
+                <h3>Available Menu</h3>
+                <div class="menu-grid" id="menuGrid">
+                    <!-- Dummy items for frontend testing -->
+                    <div class="menu-card" onclick="addToCart('Burger', 5.99)">
+                        <h4>🍔 Beef Burger</h4>
+                        <p>$5.99</p>
+                    </div>
+                    <div class="menu-card" onclick="addToCart('Pizza', 8.99)">
+                        <h4>🍕 Cheese Pizza</h4>
+                        <p>$8.99</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right: Order Cart -->
+            <div class="cart-panel">
+                <h3>Table Order</h3>
+                <input type="number" id="tableNumber" placeholder="Table Number" required style="width: 100%; padding: 10px; margin-bottom: 15px;">
+                <div id="cartItems"></div>
+                <h3 style="margin-top: 20px;">Total: $<span id="totalPrice">0.00</span></h3>
+                <button class="btn-primary" style="width: 100%; margin-top: 10px;" onclick="sendToKitchen()">Send to Kitchen (KDS)</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

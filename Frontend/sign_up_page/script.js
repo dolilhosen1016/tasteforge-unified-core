@@ -1,20 +1,20 @@
 // =========================================
-// ✅ TAB SWITCHING LOGIC (For Sign In Page later)
+// 1. TAB SWITCHING LOGIC
 // =========================================
-function switchTab(tabId) {
+window.switchTab = function(tabId) {
     document.querySelectorAll('.tab-btn').forEach(btn => {
         btn.classList.remove('active');
     });
     const selectedTab = document.getElementById('tab-' + tabId);
-    if(selectedTab) {
+    if (selectedTab) {
         selectedTab.classList.add('active');
     }
-}
+};
 
 // =========================================
-// ✅ PASSWORD VISIBILITY TOGGLE
+// 2. PASSWORD VISIBILITY TOGGLE
 // =========================================
-function togglePassword() {
+window.togglePassword = function() {
     const passwordInput = document.getElementById('passwordInput');
     const eyeIcon = document.getElementById('eye-icon');
     
@@ -33,10 +33,10 @@ function togglePassword() {
             `;
         }
     }
-}
+};
 
 // =========================================
-// ✅ SIGN UP LOGIC (Updated: Only Admin & Customer)
+// 3. SIGN UP LOGIC (User & Owner/Admin)
 // =========================================
 window.handleSignup = async function(event) {
     event.preventDefault(); 
@@ -44,7 +44,7 @@ window.handleSignup = async function(event) {
     const form = event.target;
     const submitBtn = form.querySelector('button[type="submit"]');
     
-    // ইনপুট ফিল্ডগুলো ধরা
+    // সব ইনপুট ফিল্ড ধরা হচ্ছে
     const nameInput = form.querySelector('input[placeholder="Full Name"]');
     const emailInput = form.querySelector('input[placeholder="Email Address"]');
     const passwordInput = form.querySelector('input[placeholder="Password"]') || document.getElementById('passwordInput');
@@ -59,15 +59,16 @@ window.handleSignup = async function(event) {
         return;
     }
 
-    let userRole = 'Customer'; // ডিফল্ট রোল কাস্টমার
+    // ২. ডিফল্ট রোল 'user' (Mongoose enum-এর সাথে মিল রেখে ছোট হাতের)
+    let userRole = 'user'; 
 
-    // ২. সিক্রেট কি ভেরিফিকেশন (শুধু Admin এর জন্য)
+    // ৩. সিক্রেট কি ভেরিফিকেশন (শুধু Owner/Admin এর জন্য)
     if (secretKeyInput) {
-        if (secretKeyInput.value !== "TF_OWNER_61016") {
+        if (secretKeyInput.value.trim() !== "TF_OWNER_61016") {
             alert("❌ Unauthorized Access! Invalid Secret Access Key.");
             return;
         }
-        userRole = 'Admin'; 
+        userRole = 'admin'; 
     } 
 
     // বাটন লোডিং স্টেট 
@@ -75,7 +76,7 @@ window.handleSignup = async function(event) {
     submitBtn.disabled = true;
 
     try {
-        // ৩. ব্যাকএন্ড API তে রিকোয়েস্ট পাঠানো
+        // ৪. ব্যাকএন্ড API তে রিকোয়েস্ট পাঠানো
         const response = await fetch('http://localhost:5000/api/users/register', {
             method: 'POST',
             headers: {
@@ -92,12 +93,13 @@ window.handleSignup = async function(event) {
         const data = await response.json();
 
         if (response.ok) {
-            alert(`🎉 ${userRole} Registration Successful! Please sign in to continue.`);
+            alert(`🎉 ${userRole.toUpperCase()} Registration Successful! Please sign in to continue.`);
             
-            // সাইনআপ সফল হলে সাইন-ইন পেজে পাঠানো
-            window.location.href = "../sign_in_page/sign_in_index.html"; 
+            // সাইনআপ সফল হলে সঠিক ট্যাবসহ সাইন-ইন পেজে পাঠানো
+            const targetTab = (userRole === 'admin') ? 'owner' : 'user';
+            window.location.href = `../sign_in_page/sign_in_index.html?tab=${targetTab}`; 
         } else {
-            alert('❌ Error: ' + data.error);
+            alert('❌ Error: ' + (data.error || 'Registration failed'));
         }
     } catch (error) {
         console.error('Signup failed:', error);

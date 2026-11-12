@@ -1,0 +1,40 @@
+
+.cashier-bg {
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8)), url('cashier-bg.png') no-repeat center center/cover;
+}
+
+/* Cashier Layout */
+.billing-panel {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 25px;
+    border-radius: 12px;
+    margin-top: 20px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.bill-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    background: #fff;
+    transition: 0.3s;
+}
+
+.bill-card:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.status-ready {
+    color: #28a745;
+    font-weight: bold;
+    margin-top: 8px;
+    display: inline-block;
+    padding: 4px 10px;
+    background: #e6f4ea;
+    border-radius: 20px;
+    font-size: 14px;
+}

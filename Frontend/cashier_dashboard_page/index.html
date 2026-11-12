@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TasteForge - Cashier Dashboard</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="dashboard-bg cashier-bg">
+
+    <div class="sidebar">
+        <h2>TasteForge</h2>
+        <ul>
+            <li class="active">Pending Bills</li>
+            <li>Completed Sales</li>
+        </ul>
+        <button class="btn-secondary" id="logoutBtn" style="margin-top: auto;">Logout</button>
+    </div>
+
+    <div class="main-content">
+        <header>
+            <h1>Cashier Dashboard</h1>
+            <p>Welcome, <span id="cashierName">Loading...</span></p>
+        </header>
+
+        <div class="billing-panel">
+            <h3>Orders Ready for Payment</h3>
+            <div id="pendingBills">
+                <!-- Dummy Bill for frontend testing -->
+                <div class="bill-card">
+                    <div>
+                        <h4>Token: #TF-102 (Table: 4)</h4>
+                        <p>Items: 2x Burger, 1x Coke</p>
+                        <p class="status-ready">Status: Food Ready</p>
+                    </div>
+                    <div style="text-align: right;">
+                        <h3>$14.50</h3>
+                        <button class="btn-primary" onclick="processPayment('TF-102')">Receive Payment</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
